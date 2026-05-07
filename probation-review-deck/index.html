@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>试用期转正述职 | 从内容执行到 AI Native 增长系统搭建</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================================
+       CSS CUSTOM PROPERTIES: EDITORIAL TECH THEME
+       =========================================== */
+    :root {
+      --paper: #f7f2e8;
+      --paper-deep: #ece3d2;
+      --ink: #171717;
+      --muted: #615d55;
+      --hairline: rgba(23, 23, 23, 0.14);
+      --brand-blue: #115ad7;
+      --tech-cyan: #00a8c8;
+      --data-orange: #e76f2e;
+      --signal-red: #c84d37;
+      --soft-blue: #dfeaf9;
+      --soft-cyan: #dff6f7;
+      --soft-orange: #f7e0cf;
+      --font-display: "Fraunces", "Noto Serif SC", serif;
+      --font-serif: "Noto Serif SC", serif;
+      --font-body: "Noto Sans SC", sans-serif;
+      --title-size: clamp(2rem, 5.8vw, 5.5rem);
+      --h2-size: clamp(1.45rem, 3.6vw, 3.25rem);
+      --h3-size: clamp(1rem, 2.3vw, 1.65rem);
+      --body-size: clamp(0.78rem, 1.22vw, 1.04rem);
+      --small-size: clamp(0.62rem, 0.85vw, 0.82rem);
+      --micro-size: clamp(0.52rem, 0.72vw, 0.7rem);
+      --slide-padding: clamp(1.2rem, 4vw, 4.4rem);
+      --content-gap: clamp(0.7rem, 1.8vw, 1.7rem);
+      --element-gap: clamp(0.42rem, 0.95vw, 0.85rem);
+      --radius: 8px;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-normal: 0.72s;
+    }
+
+    /* ===========================================
+       BASE RESET
+       =========================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===========================================
+       VIEWPORT FITTING: MANDATORY BASE STYLES
+       Include this ENTIRE file in every presentation.
+       These styles ensure slides fit exactly in the viewport.
+       =========================================== */
+
+    /* 1. Lock html/body to viewport */
+    html, body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .deck {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+
+    /* 2. Each slide = exact viewport height */
+    .slide {
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh; /* Dynamic viewport height for mobile browsers */
+        overflow: hidden; /* CRITICAL: Prevent ANY overflow */
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(clamp(0.6rem, 1.6vw, 1.4rem));
+        transition:
+          opacity 0.34s ease,
+          transform 0.42s var(--ease-out-expo),
+          visibility 0.34s ease;
+    }
+
+    .slide.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+        z-index: 2;
+    }
+
+    /* 3. Content container with flex for centering */
+    .slide-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-height: 100%;
+        overflow: hidden; /* Double-protection against overflow */
+        padding: var(--slide-padding);
+    }
+
+    /* 4. ALL typography uses clamp() for responsive scaling */
+    :root {
+        /* Titles scale from mobile to desktop */
+        --title-size: clamp(1.5rem, 5vw, 4rem);
+        --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+        --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+
+        /* Body text */
+        --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+        --small-size: clamp(0.65rem, 1vw, 0.875rem);
+
+        /* Spacing scales with viewport */
+        --slide-padding: clamp(1rem, 4vw, 4rem);
+        --content-gap: clamp(0.5rem, 2vw, 2rem);
+        --element-gap: clamp(0.25rem, 1vw, 1rem);
+    }
+
+    /* 5. Cards/containers use viewport-relative max sizes */
+    .card, .container, .content-box {
+        max-width: min(90vw, 1000px);
+        max-height: min(80vh, 700px);
+    }
+
+    /* 6. Lists auto-scale with viewport */
+    .feature-list, .bullet-list {
+        gap: clamp(0.4rem, 1vh, 1rem);
+    }
+
+    .feature-list li, .bullet-list li {
+        font-size: var(--body-size);
+        line-height: 1.4;
+    }
+
+    /* 7. Grids adapt to available space */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+        gap: clamp(0.5rem, 1.5vw, 1rem);
+    }
+
+    /* 8. Images constrained to viewport */
+    img, .image-container {
+        max-width: 100%;
+        max-height: min(50vh, 400px);
+        object-fit: contain;
+    }
+
+    /* ===========================================
+       RESPONSIVE BREAKPOINTS
+       Aggressive scaling for smaller viewports
+       =========================================== */
+
+    /* Short viewports (< 700px height) */
+    @media (max-height: 700px) {
+        :root {
+            --slide-padding: clamp(0.75rem, 3vw, 2rem);
+            --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+            --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+            --h2-size: clamp(1rem, 3vw, 1.75rem);
+        }
+    }
+
+    /* Very short viewports (< 600px height) */
+    @media (max-height: 600px) {
+        :root {
+            --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+            --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+            --title-size: clamp(1.1rem, 4vw, 2rem);
+            --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+        }
+
+        /* Hide non-essential elements */
+        .nav-dots, .section-nav, .keyboard-hint, .decorative {
+            display: none;
+        }
+    }
+
+    /* Extremely short (landscape phones, < 500px height) */
+    @media (max-height: 500px) {
+        :root {
+            --slide-padding: clamp(0.4rem, 2vw, 1rem);
+            --title-size: clamp(1rem, 3.5vw, 1.5rem);
+            --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+            --body-size: clamp(0.65rem, 1vw, 0.85rem);
+        }
+    }
+
+    /* Narrow viewports (< 600px width) */
+    @media (max-width: 600px) {
+        :root {
+            --title-size: clamp(1.25rem, 7vw, 2.5rem);
+        }
+
+        /* Stack grids vertically */
+        .grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ===========================================
+       REDUCED MOTION
+       Respect user preferences
+       =========================================== */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.2s !important;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+    }
+
+    /* ===========================================
+       PAGE ATMOSPHERE
+       =========================================== */
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.28;
+      background-image:
+        linear-gradient(rgba(23, 23, 23, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 23, 23, 0.035) 1px, transparent 1px);
+      background-size: clamp(3rem, 7vw, 6rem) clamp(3rem, 7vw, 6rem);
+    }
+
+    .slide {
+      isolation: isolate;
+      background:
+        linear-gradient(90deg, rgba(17, 90, 215, 0.075), transparent 18%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.44), rgba(236, 227, 210, 0.34)),
+        var(--paper);
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: var(--slide-padding);
+      border: 1px solid var(--hairline);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .slide::after {
+      content: attr(data-kicker);
+      position: absolute;
+      left: var(--slide-padding);
+      top: clamp(0.7rem, 2vw, 1.8rem);
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: var(--micro-size);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .slide-content {
+      z-index: 2;
+      gap: var(--content-gap);
+    }
+
+    .dark-slide {
+      color: #f7f2e8;
+      background:
+        linear-gradient(135deg, #10141d 0%, #172139 48%, #0f151c 100%);
+    }
+
+    .dark-slide::before {
+      border-color: rgba(247, 242, 232, 0.18);
+    }
+
+    .dark-slide::after,
+    .dark-slide .eyebrow,
+    .dark-slide .folio,
+    .dark-slide .muted {
+      color: rgba(247, 242, 232, 0.72);
+    }
+
+    /* ===========================================
+       TYPOGRAPHY
+       =========================================== */
+    h1, h2, h3 {
+      text-wrap: balance;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.05rem, 5.4vw, 5.1rem);
+      line-height: 1.04;
+      font-weight: 900;
+      max-width: min(92vw, 1100px);
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 3.8vw, 3.35rem);
+      line-height: 1.1;
+      font-weight: 900;
+      max-width: min(92vw, 1040px);
+    }
+
+    h3 {
+      font-family: var(--font-serif);
+      font-size: var(--h3-size);
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    p {
+      line-height: 1.62;
+      max-width: min(86vw, 880px);
+    }
+
+    strong {
+      font-weight: 900;
+    }
+
+    .en {
+      font-family: var(--font-display);
+      letter-spacing: 0;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: var(--small-size);
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .accent-blue { color: var(--brand-blue); }
+    .accent-cyan { color: var(--tech-cyan); }
+    .accent-orange { color: var(--data-orange); }
+
+    .big-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.35rem, 6.6vw, 6.4rem);
+      line-height: 0.92;
+      color: var(--brand-blue);
+      letter-spacing: 0;
+    }
+
+    .pullquote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.28rem, 3.2vw, 3rem);
+      line-height: 1.2;
+      font-weight: 900;
+      max-width: min(88vw, 980px);
+    }
+
+    /* ===========================================
+       COMMON LAYOUTS
+       =========================================== */
+    .folio {
+      position: absolute;
+      right: var(--slide-padding);
+      top: clamp(0.7rem, 2vw, 1.8rem);
+      color: var(--muted);
+      font-family: var(--font-display);
+      font-size: var(--small-size);
+      z-index: 3;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: clamp(0.8rem, 3vw, 3rem);
+      align-items: center;
+      min-height: 0;
+    }
+
+    .wide-two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: clamp(0.8rem, 3vw, 3rem);
+      align-items: center;
+      min-height: 0;
+    }
+
+    .headline-stack {
+      display: grid;
+      gap: clamp(0.65rem, 1.4vw, 1.35rem);
+      align-content: center;
+      min-height: 0;
+    }
+
+    .rule {
+      width: min(100%, 760px);
+      height: 1px;
+      background: var(--hairline);
+    }
+
+    .mini-label {
+      color: var(--muted);
+      font-size: var(--micro-size);
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(0.32rem, 0.75vw, 0.72rem);
+    }
+
+    .tag {
+      border: 1px solid var(--hairline);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.32);
+      border-radius: var(--radius);
+      padding: clamp(0.28rem, 0.7vw, 0.58rem) clamp(0.45rem, 1vw, 0.85rem);
+      font-size: var(--small-size);
+      font-weight: 700;
+    }
+
+    .dark-slide .tag {
+      color: #f7f2e8;
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(0.42rem, 1vw, 0.9rem);
+    }
+
+    .metric {
+      border-top: clamp(0.18rem, 0.5vw, 0.34rem) solid var(--brand-blue);
+      padding: clamp(0.5rem, 1.15vw, 1rem) 0 0;
+      min-width: 0;
+    }
+
+    .metric:nth-child(2) { border-color: var(--data-orange); }
+    .metric:nth-child(3) { border-color: var(--tech-cyan); }
+    .metric:nth-child(4) { border-color: var(--signal-red); }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4.1vw, 4.15rem);
+      line-height: 0.95;
+      font-weight: 800;
+    }
+
+    .metric-label {
+      margin-top: clamp(0.3rem, 0.7vw, 0.65rem);
+      font-size: var(--small-size);
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .dark-slide .metric-label {
+      color: rgba(247, 242, 232, 0.72);
+    }
+
+    .role-grid,
+    .project-grid,
+    .growth-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.65rem, 1.45vw, 1.3rem);
+      min-height: 0;
+    }
+
+    .role-card,
+    .project-card,
+    .growth-card {
+      border: 1px solid var(--hairline);
+      background: rgba(255, 255, 255, 0.32);
+      border-radius: var(--radius);
+      padding: clamp(0.62rem, 1.45vw, 1.25rem);
+      min-height: 0;
+    }
+
+    .role-card h3,
+    .project-card h3,
+    .growth-card h3 {
+      margin-bottom: clamp(0.45rem, 0.9vw, 0.8rem);
+    }
+
+    .role-card p,
+    .project-card p,
+    .growth-card p {
+      font-size: var(--small-size);
+      line-height: 1.56;
+    }
+
+    .role-card:nth-child(1),
+    .growth-card:nth-child(1) {
+      background: linear-gradient(180deg, rgba(17, 90, 215, 0.13), rgba(255, 255, 255, 0.34));
+    }
+
+    .role-card:nth-child(2),
+    .growth-card:nth-child(2) {
+      background: linear-gradient(180deg, rgba(231, 111, 46, 0.13), rgba(255, 255, 255, 0.34));
+    }
+
+    .role-card:nth-child(3),
+    .growth-card:nth-child(3) {
+      background: linear-gradient(180deg, rgba(0, 168, 200, 0.13), rgba(255, 255, 255, 0.34));
+    }
+
+    .evidence-frame {
+      position: relative;
+      border: 1px solid var(--hairline);
+      background: rgba(255, 255, 255, 0.38);
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 0;
+      box-shadow: 0 clamp(0.55rem, 1.4vw, 1.2rem) clamp(1.8rem, 4vw, 3.6rem) rgba(23, 23, 23, 0.08);
+    }
+
+    .evidence-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: min(58vh, 520px);
+      object-fit: contain;
+    }
+
+    .image-fill img {
+      height: min(58vh, 520px);
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .caption {
+      position: absolute;
+      left: clamp(0.45rem, 1vw, 0.85rem);
+      bottom: clamp(0.45rem, 1vw, 0.85rem);
+      color: var(--ink);
+      background: rgba(247, 242, 232, 0.86);
+      border: 1px solid rgba(23, 23, 23, 0.11);
+      border-radius: var(--radius);
+      padding: clamp(0.26rem, 0.6vw, 0.46rem) clamp(0.4rem, 0.9vw, 0.76rem);
+      font-size: var(--micro-size);
+      font-weight: 900;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: clamp(0.42rem, 1vw, 0.85rem);
+    }
+
+    .timeline-step {
+      border-left: clamp(0.16rem, 0.42vw, 0.3rem) solid var(--brand-blue);
+      padding-left: clamp(0.42rem, 0.85vw, 0.72rem);
+      min-width: 0;
+    }
+
+    .timeline-step:nth-child(2) { border-color: var(--tech-cyan); }
+    .timeline-step:nth-child(3) { border-color: var(--data-orange); }
+    .timeline-step:nth-child(4) { border-color: var(--signal-red); }
+    .timeline-step:nth-child(5) { border-color: var(--ink); }
+
+    .timeline-step strong {
+      display: block;
+      font-size: clamp(0.82rem, 1.28vw, 1.05rem);
+      margin-bottom: clamp(0.22rem, 0.5vw, 0.4rem);
+    }
+
+    .timeline-step span {
+      color: var(--muted);
+      font-size: var(--small-size);
+      line-height: 1.45;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: grid;
+      max-width: min(88vw, 860px);
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: clamp(0.92rem, 1.6vw, 1.35rem);
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: clamp(0.46rem, 0.9vw, 0.68rem);
+      width: clamp(0.34rem, 0.7vw, 0.48rem);
+      height: clamp(0.34rem, 0.7vw, 0.48rem);
+      background: var(--brand-blue);
+      border-radius: 999px;
+    }
+
+    .formula {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.42rem, 1vw, 0.9rem);
+      align-items: stretch;
+    }
+
+    .formula-item {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: clamp(0.7rem, 1.4vw, 1.25rem);
+      background: rgba(255, 255, 255, 0.32);
+    }
+
+    .formula-item strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.55rem, 3.5vw, 3.15rem);
+      line-height: 1;
+      margin-bottom: clamp(0.36rem, 0.8vw, 0.66rem);
+    }
+
+    .year-roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(0.5rem, 1.1vw, 1rem);
+    }
+
+    .quarter {
+      border-top: clamp(0.18rem, 0.46vw, 0.32rem) solid var(--brand-blue);
+      padding-top: clamp(0.5rem, 1.1vw, 0.95rem);
+    }
+
+    .quarter:nth-child(2) { border-color: var(--data-orange); }
+    .quarter:nth-child(3) { border-color: var(--tech-cyan); }
+    .quarter:nth-child(4) { border-color: var(--signal-red); }
+
+    .quarter h3 {
+      margin-bottom: clamp(0.36rem, 0.8vw, 0.7rem);
+    }
+
+    .quarter p {
+      color: var(--muted);
+      font-size: var(--small-size);
+      line-height: 1.54;
+    }
+
+    /* ===========================================
+       SLIDE-SPECIFIC COMPOSITIONS
+       =========================================== */
+    .title-slide .slide-content {
+      justify-content: space-between;
+    }
+
+    .title-mark {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: var(--content-gap);
+      align-items: end;
+    }
+
+    .title-meta {
+      border-left: clamp(0.2rem, 0.5vw, 0.34rem) solid var(--data-orange);
+      padding-left: clamp(0.6rem, 1.35vw, 1.2rem);
+      color: var(--muted);
+      font-size: var(--small-size);
+      line-height: 1.7;
+      min-width: min(28vw, 260px);
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: start;
+      gap: var(--content-gap);
+    }
+
+    .masthead-number {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 12vw, 12rem);
+      line-height: 0.82;
+      color: rgba(17, 90, 215, 0.15);
+    }
+
+    .section-title {
+      color: #f7f2e8;
+    }
+
+    .section-title h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 7vw, 7rem);
+      line-height: 0.9;
+    }
+
+    .section-title p {
+      color: rgba(247, 242, 232, 0.76);
+      font-size: clamp(0.82rem, 1.3vw, 1.1rem);
+    }
+
+    .section-number {
+      position: absolute;
+      right: var(--slide-padding);
+      bottom: var(--slide-padding);
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 15vw, 14rem);
+      line-height: 0.78;
+      color: rgba(247, 242, 232, 0.09);
+      z-index: 1;
+    }
+
+    .growth-curve {
+      display: grid;
+      grid-template-columns: minmax(0, 0.74fr) minmax(0, 1.26fr);
+      gap: clamp(0.8rem, 2vw, 1.8rem);
+      align-items: center;
+      min-height: 0;
+    }
+
+    .growth-curve .metric-row {
+      grid-template-columns: 1fr;
+      gap: clamp(0.38rem, 0.9vw, 0.78rem);
+    }
+
+    .growth-curve .metric-value {
+      font-size: clamp(1.6rem, 4vw, 3.45rem);
+    }
+
+    .growth-curve .metric {
+      padding-top: clamp(0.34rem, 0.7vw, 0.62rem);
+    }
+
+    .insight-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.5rem, 1.2vw, 1rem);
+    }
+
+    .insight {
+      border-top: 1px solid var(--hairline);
+      padding-top: clamp(0.4rem, 0.9vw, 0.75rem);
+      font-size: var(--small-size);
+      line-height: 1.55;
+    }
+
+    .insight strong {
+      display: block;
+      margin-bottom: clamp(0.18rem, 0.4vw, 0.32rem);
+    }
+
+    .artifact-spread {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(0.65rem, 1.5vw, 1.4rem);
+      align-items: center;
+    }
+
+    .promise {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: clamp(0.8rem, 3vw, 3rem);
+      align-items: center;
+    }
+
+    .personal-slide .slide-content {
+      justify-content: center;
+    }
+
+    .personal-hello {
+      display: grid;
+      gap: clamp(0.8rem, 2vw, 1.7rem);
+      align-content: center;
+      max-width: min(90vw, 1080px);
+    }
+
+    .personal-hello h1 {
+      font-size: clamp(3.2rem, 11vw, 10rem);
+      line-height: 0.88;
+    }
+
+    .personal-hello .pullquote {
+      max-width: min(84vw, 880px);
+    }
+
+    .opening-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.5rem, 1.2vw, 1rem);
+      margin-top: clamp(0.6rem, 1.5vw, 1.2rem);
+      max-width: min(88vw, 900px);
+    }
+
+    .opening-meta span {
+      border-top: 1px solid var(--hairline);
+      color: var(--muted);
+      font-size: var(--small-size);
+      font-weight: 800;
+      padding-top: clamp(0.35rem, 0.8vw, 0.65rem);
+    }
+
+    .agenda-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(0.65rem, 1.5vw, 1.35rem);
+      min-height: 0;
+    }
+
+    .agenda-card {
+      border-left: clamp(0.18rem, 0.45vw, 0.32rem) solid var(--brand-blue);
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius);
+      padding: clamp(0.7rem, 1.45vw, 1.25rem);
+    }
+
+    .agenda-card:nth-child(2) { border-color: var(--data-orange); }
+    .agenda-card:nth-child(3) { border-color: var(--tech-cyan); }
+    .agenda-card:nth-child(4) { border-color: var(--signal-red); }
+
+    .agenda-card strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 3.5rem);
+      line-height: 0.95;
+      margin-bottom: clamp(0.5rem, 1vw, 0.9rem);
+    }
+
+    .agenda-card p {
+      color: var(--muted);
+      font-size: var(--small-size);
+      line-height: 1.55;
+    }
+
+    .formula-dashboard {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(0.75rem, 2vw, 1.8rem);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .dashboard-panel {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.34);
+      padding: clamp(0.7rem, 1.45vw, 1.2rem);
+      min-height: 0;
+    }
+
+    .dashboard-panel h3 {
+      margin-bottom: clamp(0.5rem, 1vw, 0.9rem);
+    }
+
+    .formula-dashboard .metric-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(0.55rem, 1.15vw, 1rem);
+    }
+
+    .formula-dashboard .metric {
+      min-width: 0;
+      padding-top: clamp(0.42rem, 0.9vw, 0.75rem);
+    }
+
+    .formula-dashboard .metric-value {
+      font-size: clamp(1.55rem, 3.2vw, 3.2rem);
+      white-space: nowrap;
+    }
+
+    .formula-dashboard .metric-label {
+      font-size: clamp(0.58rem, 0.86vw, 0.76rem);
+      line-height: 1.32;
+    }
+
+    .content-bars {
+      display: grid;
+      gap: clamp(0.45rem, 1vw, 0.8rem);
+    }
+
+    .bar-item {
+      display: grid;
+      grid-template-columns: minmax(0, 8rem) minmax(0, 1fr) auto;
+      gap: clamp(0.45rem, 1vw, 0.75rem);
+      align-items: center;
+      color: var(--muted);
+      font-size: var(--small-size);
+      font-weight: 800;
+    }
+
+    .bar-track {
+      height: clamp(0.58rem, 1vw, 0.86rem);
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.42);
+    }
+
+    .bar-track span {
+      display: block;
+      height: 100%;
+      width: var(--value);
+      background: linear-gradient(90deg, var(--brand-blue), var(--tech-cyan));
+    }
+
+    .bar-item:nth-child(2) .bar-track span { background: linear-gradient(90deg, var(--data-orange), var(--brand-blue)); }
+    .bar-item:nth-child(3) .bar-track span { background: linear-gradient(90deg, var(--tech-cyan), var(--data-orange)); }
+
+    .evidence-mosaic,
+    .agent-gallery,
+    .portrait-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(0.45rem, 1vw, 0.85rem);
+      min-height: 0;
+    }
+
+    .evidence-tile {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.36);
+      min-height: 0;
+    }
+
+    .evidence-tile img {
+      width: 100%;
+      height: clamp(7rem, 18vh, 12.5rem);
+      max-height: none;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .evidence-tile.contain img {
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .evidence-tile span {
+      position: absolute;
+      left: clamp(0.4rem, 0.8vw, 0.68rem);
+      bottom: clamp(0.4rem, 0.8vw, 0.68rem);
+      padding: clamp(0.22rem, 0.5vw, 0.4rem) clamp(0.38rem, 0.8vw, 0.62rem);
+      border-radius: var(--radius);
+      color: var(--ink);
+      background: rgba(247, 242, 232, 0.88);
+      border: 1px solid rgba(23, 23, 23, 0.12);
+      font-size: var(--micro-size);
+      font-weight: 900;
+    }
+
+    .knowledge-mask::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 28%;
+      background: linear-gradient(90deg, rgba(247, 242, 232, 0), rgba(247, 242, 232, 0.94) 42%);
+      pointer-events: none;
+    }
+
+    .agent-gallery .evidence-tile img {
+      height: clamp(6.2rem, 16vh, 10.8rem);
+    }
+
+    .portrait-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .portrait-grid .evidence-tile img {
+      height: clamp(6rem, 17vh, 11.5rem);
+      object-fit: contain;
+      object-position: center;
+      padding: clamp(0.24rem, 0.55vw, 0.42rem);
+    }
+
+    .future-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.55rem, 1.25vw, 1.05rem);
+      min-height: 0;
+    }
+
+    .future-card {
+      border-top: clamp(0.18rem, 0.44vw, 0.3rem) solid var(--brand-blue);
+      padding-top: clamp(0.48rem, 1vw, 0.8rem);
+    }
+
+    .future-card:nth-child(2) { border-color: var(--data-orange); }
+    .future-card:nth-child(3) { border-color: var(--tech-cyan); }
+
+    .future-card p {
+      color: var(--muted);
+      font-size: var(--small-size);
+      line-height: 1.52;
+    }
+
+    .system-map {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: clamp(0.38rem, 0.9vw, 0.75rem);
+    }
+
+    .system-node {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.34);
+      padding: clamp(0.52rem, 1vw, 0.85rem);
+      font-size: var(--small-size);
+      font-weight: 900;
+      text-align: center;
+    }
+
+    #slide-21 h2,
+    #slide-22 h2 {
+      font-size: clamp(1.35rem, 3vw, 2.65rem);
+      line-height: 1.14;
+      margin-bottom: clamp(0.4rem, 0.95vw, 0.8rem);
+    }
+
+    #slide-21 .year-roadmap,
+    #slide-22 .year-roadmap {
+      gap: clamp(0.65rem, 1.4vw, 1.25rem);
+    }
+
+    #slide-21 .evidence-frame img,
+    #slide-22 .evidence-frame img {
+      max-height: min(43vh, 360px);
+    }
+
+    /* ===========================================
+       ANIMATIONS
+       =========================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(clamp(1rem, 2vw, 1.8rem));
+      transition:
+        opacity var(--duration-normal) var(--ease-out-expo),
+        transform var(--duration-normal) var(--ease-out-expo);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(calc(-1 * clamp(1rem, 2.4vw, 2.2rem)));
+      transition:
+        opacity var(--duration-normal) var(--ease-out-expo),
+        transform var(--duration-normal) var(--ease-out-expo);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.96);
+      transition:
+        opacity var(--duration-normal) var(--ease-out-expo),
+        transform var(--duration-normal) var(--ease-out-expo);
+    }
+
+    .slide.visible .reveal,
+    .slide.visible .reveal-left,
+    .slide.visible .reveal-scale {
+      opacity: 1;
+      transform: none;
+    }
+
+    .slide.visible .reveal:nth-child(1) { transition-delay: 0.06s; }
+    .slide.visible .reveal:nth-child(2) { transition-delay: 0.14s; }
+    .slide.visible .reveal:nth-child(3) { transition-delay: 0.22s; }
+    .slide.visible .reveal:nth-child(4) { transition-delay: 0.30s; }
+    .slide.visible .reveal:nth-child(5) { transition-delay: 0.38s; }
+
+    /* ===========================================
+       CONTROLS, EDITOR, AND SPEAKER NOTES
+       =========================================== */
+    .progress-bar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: clamp(0.12rem, 0.3vw, 0.22rem);
+      width: 0%;
+      background: linear-gradient(90deg, var(--brand-blue), var(--data-orange), var(--tech-cyan));
+      z-index: 9999;
+      transition: width 0.24s ease;
+    }
+
+    .nav-dots {
+      position: fixed;
+      right: clamp(0.5rem, 1.2vw, 1rem);
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      gap: clamp(0.25rem, 0.6vw, 0.42rem);
+      z-index: 9000;
+      opacity: 0;
+      transition: opacity 0.24s ease;
+    }
+
+    .nav-dots:hover,
+    .nav-dots:focus-within {
+      opacity: 1;
+    }
+
+    .nav-dot {
+      width: clamp(0.42rem, 0.8vw, 0.62rem);
+      height: clamp(0.42rem, 0.8vw, 0.62rem);
+      border-radius: 999px;
+      border: 1px solid rgba(23, 23, 23, 0.35);
+      background: rgba(247, 242, 232, 0.72);
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .nav-dot.active {
+      background: var(--brand-blue);
+      border-color: var(--brand-blue);
+    }
+
+    .section-nav {
+      --section-nav-peek: clamp(0.45rem, 0.9vw, 0.68rem);
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%) translateX(calc(100% - var(--section-nav-peek)));
+      display: grid;
+      gap: clamp(0.35rem, 0.8vw, 0.65rem);
+      z-index: 8999;
+      opacity: 0;
+      pointer-events: none;
+      padding-right: clamp(0.32rem, 0.75vw, 0.62rem);
+      transition: opacity 0.24s ease, transform 0.28s var(--ease-out-expo);
+    }
+
+    .section-nav.visible {
+      opacity: 0.18;
+      pointer-events: auto;
+    }
+
+    .section-nav.visible:hover,
+    .section-nav.visible:focus-within {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    .section-nav.visible:not(:hover):not(:focus-within) .section-nav-item {
+      color: transparent;
+      background: rgba(247, 242, 232, 0.42);
+      border-right-color: rgba(17, 90, 215, 0.34);
+      box-shadow: none;
+    }
+
+    .section-nav-item {
+      position: relative;
+      border: 0;
+      border-right: 2px solid transparent;
+      border-radius: var(--radius);
+      background: rgba(247, 242, 232, 0.74);
+      color: rgba(23, 23, 23, 0.56);
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: var(--micro-size);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      padding: clamp(0.34rem, 0.72vw, 0.58rem) clamp(0.16rem, 0.42vw, 0.26rem);
+      text-align: right;
+      text-orientation: mixed;
+      white-space: normal;
+      writing-mode: vertical-rl;
+    }
+
+    .section-nav-item.active {
+      border-right-color: var(--brand-blue);
+      color: var(--ink);
+      background: rgba(247, 242, 232, 0.94);
+      box-shadow: 0 clamp(0.28rem, 0.8vw, 0.7rem) clamp(0.8rem, 1.6vw, 1.25rem) rgba(23, 23, 23, 0.08);
+    }
+
+    .utility-controls {
+      position: fixed;
+      left: clamp(0.45rem, 1vw, 0.9rem);
+      top: clamp(0.45rem, 1vw, 0.9rem);
+      z-index: 10002;
+      display: flex;
+      gap: clamp(0.28rem, 0.6vw, 0.5rem);
+      opacity: 0;
+      transition: opacity 0.24s ease;
+    }
+
+    .utility-controls:hover,
+    .utility-controls:focus-within,
+    .utility-controls.show {
+      opacity: 1;
+    }
+
+    .control-button,
+    .edit-toggle {
+      min-width: clamp(1.75rem, 3vw, 2.35rem);
+      height: clamp(1.75rem, 3vw, 2.35rem);
+      border: 1px solid rgba(23, 23, 23, 0.18);
+      border-radius: var(--radius);
+      background: rgba(247, 242, 232, 0.92);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: var(--small-size);
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 clamp(0.35rem, 0.9vw, 0.8rem) clamp(1rem, 2vw, 1.8rem) rgba(23, 23, 23, 0.08);
+    }
+
+    .edit-hotzone {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: clamp(4rem, 8vw, 6rem);
+      height: clamp(4rem, 8vw, 6rem);
+      z-index: 10000;
+    }
+
+    .edit-toggle {
+      position: fixed;
+      left: clamp(0.45rem, 1vw, 0.9rem);
+      top: clamp(3rem, 4.8vw, 4rem);
+      z-index: 10001;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.24s ease;
+    }
+
+    .edit-toggle.show,
+    .edit-toggle.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .editing [data-editable] {
+      outline: 1px dashed rgba(17, 90, 215, 0.7);
+      outline-offset: clamp(0.12rem, 0.25vw, 0.22rem);
+      cursor: text;
+    }
+
+    .speaker-note {
+      display: none;
+    }
+
+    .notes-panel {
+      position: fixed;
+      right: clamp(0.7rem, 1.6vw, 1.3rem);
+      bottom: clamp(0.7rem, 1.6vw, 1.3rem);
+      width: min(36vw, 520px);
+      max-height: min(62vh, 620px);
+      overflow: auto;
+      z-index: 10003;
+      border: 1px solid rgba(23, 23, 23, 0.16);
+      border-radius: var(--radius);
+      background: rgba(247, 242, 232, 0.96);
+      box-shadow: 0 clamp(0.7rem, 2vw, 1.8rem) clamp(2rem, 5vw, 4rem) rgba(23, 23, 23, 0.16);
+      padding: clamp(0.75rem, 1.5vw, 1.2rem);
+      transform: translateY(clamp(1rem, 2vw, 1.6rem));
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity 0.24s ease,
+        transform 0.24s ease;
+    }
+
+    .notes-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .notes-panel h3 {
+      font-family: var(--font-body);
+      font-size: var(--small-size);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: clamp(0.46rem, 1vw, 0.8rem);
+    }
+
+    .notes-panel p,
+    .notes-panel li {
+      font-size: var(--small-size);
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .notes-panel ul {
+      padding-left: clamp(0.9rem, 1.5vw, 1.3rem);
+      display: grid;
+      gap: clamp(0.28rem, 0.6vw, 0.48rem);
+    }
+
+    .save-toast {
+      position: fixed;
+      left: 50%;
+      bottom: clamp(0.8rem, 1.6vw, 1.4rem);
+      transform: translateX(-50%) translateY(clamp(0.5rem, 1vw, 0.9rem));
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10004;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: var(--radius);
+      padding: clamp(0.38rem, 0.8vw, 0.64rem) clamp(0.6rem, 1.2vw, 1rem);
+      font-size: var(--small-size);
+      transition: opacity 0.24s ease, transform 0.24s ease;
+    }
+
+    .save-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ===========================================
+       RESPONSIVE REFINEMENTS
+       =========================================== */
+    @media (max-width: 900px) {
+      .two-col,
+      .wide-two-col,
+      .growth-curve,
+      .promise,
+      .artifact-spread,
+      .formula-dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-row,
+      .agenda-grid,
+      .role-grid,
+      .project-grid,
+      .growth-grid,
+      .formula,
+      .timeline,
+      .year-roadmap,
+      .insight-strip,
+      .evidence-mosaic,
+      .agent-gallery,
+      .portrait-grid,
+      .future-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .system-map {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .notes-panel {
+        width: min(88vw, 520px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .metric-row,
+      .agenda-grid,
+      .role-grid,
+      .project-grid,
+      .growth-grid,
+      .formula,
+      .timeline,
+      .year-roadmap,
+      .insight-strip,
+      .evidence-mosaic,
+      .agent-gallery,
+      .future-grid,
+      .system-map,
+      .opening-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(0.32rem, 1vw, 0.5rem);
+      }
+
+      .portrait-grid .evidence-tile img {
+        height: clamp(4.2rem, 10.5vh, 5.8rem);
+        padding: clamp(0.16rem, 0.45vw, 0.32rem);
+      }
+
+      .bar-item {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .title-mark,
+      .masthead {
+        grid-template-columns: 1fr;
+      }
+
+      .title-meta {
+        min-width: 0;
+      }
+
+      .section-nav {
+        --section-nav-peek: clamp(0.38rem, 1.2vw, 0.52rem);
+      }
+
+      .section-nav-item {
+        padding: clamp(0.35rem, 1vw, 0.48rem) clamp(0.16rem, 0.7vw, 0.26rem);
+      }
+
+      .formula-dashboard .metric-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .growth-curve .metric-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      @page {
+        size: 16in 9in;
+        margin: 0;
+      }
+
+      html {
+        scroll-snap-type: none;
+      }
+
+      body {
+        background: var(--paper);
+        overflow: visible;
+      }
+
+      .deck {
+        height: auto;
+        overflow: visible;
+      }
+
+      .slide {
+        position: relative;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto;
+        transform: none !important;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+
+      .utility-controls,
+      .edit-hotzone,
+      .edit-toggle,
+      .notes-panel,
+      .nav-dots,
+      .section-nav,
+      .save-toast {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <nav class="nav-dots" id="navDots" aria-label="slide navigation"></nav>
+  <nav class="section-nav" id="sectionNav" aria-label="section navigation"></nav>
+  <div class="edit-hotzone" aria-hidden="true"></div>
+  <button class="edit-toggle" id="editToggle" title="Edit mode">E</button>
+  <div class="utility-controls" id="utilityControls">
+    <button class="control-button" id="notesToggle" title="Speaker notes">N</button>
+    <button class="control-button" id="exportToggle" title="Export edited HTML">S</button>
+  </div>
+  <aside class="notes-panel" id="notesPanel" aria-live="polite">
+    <h3>Speaker Notes</h3>
+    <div id="notesContent"></div>
+  </aside>
+  <div class="save-toast" id="saveToast">已保存</div>
+
+  <main class="deck" id="deck">
+    <section class="slide personal-slide" id="slide-01" data-kicker="Hi, I'm Chestnut">
+      <span class="folio">01 / 23</span>
+      <div class="slide-content">
+        <div class="personal-hello reveal">
+          <p class="eyebrow" data-editable>栗子的转正答辩</p>
+          <h1 data-editable>嗨，我是<span class="accent-blue">栗子</span></h1>
+          <p class="pullquote" data-editable>今天是我入职六个月的转正答辩。</p>
+          <div class="opening-meta">
+            <span data-editable>6 个月试用期</span>
+            <span data-editable>内容增长系统</span>
+            <span data-editable>AI Native 运营</span>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>开场可以轻一点：嗨，我是栗子，今天是我入职六个月的转正答辩。今天我不想把它讲成一份流水账，而是想用 20 分钟说明：这 6 个月里，我怎样把内容、数据、AI 工具和业务协同串成一套可以持续运转的运营系统。</p>
+      </aside>
+    </section>
+
+    <section class="slide title-slide" id="slide-02" data-kicker="Probation Review">
+      <span class="folio">02 / 23</span>
+      <div class="slide-content">
+        <div class="masthead reveal">
+          <p class="eyebrow" data-editable>试用期转正述职</p>
+        </div>
+        <div class="title-mark">
+          <div class="headline-stack">
+            <h1 data-editable>从内容执行到<br><span class="accent-blue">AI Native</span> 增长系统搭建</h1>
+            <p class="pullquote" data-editable>六个月，我把新媒体工作从“持续交付”推进到“可复用、可迭代、可增长”的运营系统。</p>
+          </div>
+          <p class="title-meta" data-editable>栗子的转正述职<br>数据周期：2025.11.10 - 2026.05.10<br>关键词：Growth Driver / Builder / AI Native</p>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这一页进入正式主题。建议说：我会用“从内容执行到 AI Native 增长系统搭建”来概括试用期，因为这 6 个月的重点不只是完成内容发布，而是让内容工作开始有闭环、有资产、有自动化和业务协同。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-03" data-kicker="Executive Summary">
+      <span class="folio">03 / 23</span>
+      <div class="slide-content two-col">
+        <div class="headline-stack reveal-left">
+          <p class="eyebrow" data-editable>一句话总结</p>
+          <h2 data-editable>我做出的不是一组内容，而是一套增长、品牌和 AI 提效的运营底盘。</h2>
+          <div class="rule"></div>
+          <p data-editable>试用期内，我围绕公司新媒体增长目标、品牌传播目标和产品业务目标，完成了从账号运营到内容资产、从品牌基础设施到 AI 内容工厂的系统搭建。</p>
+        </div>
+        <div class="role-grid reveal-scale">
+          <article class="role-card">
+            <p class="mini-label en">Growth Driver</p>
+            <h3 data-editable>结果可量化</h3>
+            <p data-editable>用数据复盘驱动内容策略，让账号增长从发布动作变成增长闭环。</p>
+          </article>
+          <article class="role-card">
+            <p class="mini-label en">Builder</p>
+            <h3 data-editable>资产可复用</h3>
+            <p data-editable>搭建 SOP、知识库、外宣物料和协同流程，降低团队重复成本。</p>
+          </article>
+          <article class="role-card">
+            <p class="mini-label en">AI Native</p>
+            <h3 data-editable>能力可进化</h3>
+            <p data-editable>用 AI 内容工厂、AIGC 数字人和自动化工具改造内容生产链路。</p>
+          </article>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这一页的作用是给领导一个判断框架：我不是把所有事情都摊开讲，而是围绕结果、资产和进化三个角度讲贡献。后面的项目都可以回到这三个词。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-04" data-kicker="Core Data">
+      <span class="folio">04 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>核心数据</p>
+          <h2 data-editable>先看结果：账号增长进入更陡的曲线。</h2>
+        </div>
+        <div class="growth-curve">
+          <div class="metric-row reveal-left">
+            <div class="metric">
+              <div class="metric-value" data-editable>+1,905</div>
+              <div class="metric-label" data-editable>全平台粉丝增长</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value" data-editable>+206%</div>
+              <div class="metric-label" data-editable>全平台增长率</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value" data-editable>185,466</div>
+              <div class="metric-label" data-editable>全平台播放量</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value" data-editable>116</div>
+              <div class="metric-label" data-editable>条有效内容记录</div>
+            </div>
+          </div>
+          <figure class="evidence-frame reveal-scale">
+            <img src="../图片视频素材/账号运营后台截图/3粉丝数据增长曲线变的更陡.jpg" alt="粉丝数据增长曲线截图">
+            <figcaption class="caption" data-editable>证据：视频号粉丝增长曲线明显变陡</figcaption>
+          </figure>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这一页用结果抓注意力。建议说：目前核心数据仍沿用附件数据口径，全平台粉丝从 924 到 2,829，净增 1,905，增长 206%。这不是单点爆发，而是通过选题、发布、复盘和平台适配持续迭代出来的增长。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-05" data-kicker="Agenda">
+      <span class="folio">05 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>本次汇报目录</p>
+          <h2 data-editable>接下来，我将从四个方面展开。</h2>
+        </div>
+        <div class="agenda-grid reveal-scale">
+          <article class="agenda-card">
+            <strong class="en">01</strong>
+            <h3 data-editable>工作概述</h3>
+            <p data-editable>用三个关键词概括 6 个月的工作主线。</p>
+          </article>
+          <article class="agenda-card">
+            <strong class="en">02</strong>
+            <h3 data-editable>重点项目</h3>
+            <p data-editable>围绕增长、系统搭建、AI Native 三组项目展开。</p>
+          </article>
+          <article class="agenda-card">
+            <strong class="en">03</strong>
+            <h3 data-editable>个人成长</h3>
+            <p data-editable>复盘能力升级和下一阶段要补齐的地方。</p>
+          </article>
+          <article class="agenda-card">
+            <strong class="en">04</strong>
+            <h3 data-editable>未来规划</h3>
+            <p data-editable>账号矩阵、SOP、自动化系统和海外运营布局。</p>
+          </article>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这页用来给评审建立预期。可以说：我会先讲工作概述，再展开重点项目，最后讲个人成长和未来规划。重点不是堆工作量，而是让大家看到我怎么理解这个岗位未来能创造的价值。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-06" data-kicker="Three Keywords">
+      <span class="folio">06 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>工作概述</p>
+          <h2 data-editable>先用三个关键词，概述我这六个月的工作情况。</h2>
+        </div>
+        <div class="role-grid reveal-scale">
+          <article class="role-card">
+            <p class="mini-label en">01</p>
+            <h3 class="en" data-editable>Growth Driver</h3>
+            <p data-editable>围绕账号增长、数据复盘、内容策略、矩阵规划和线索协同，让内容对结果负责。</p>
+          </article>
+          <article class="role-card">
+            <p class="mini-label en">02</p>
+            <h3 class="en" data-editable>Builder</h3>
+            <p data-editable>把内容 SOP、内容资产、知识库、品牌基础设施和协同流程沉淀下来。</p>
+          </article>
+          <article class="role-card">
+            <p class="mini-label en">03</p>
+            <h3 class="en" data-editable>AI Native</h3>
+            <p data-editable>把 AI 内容工厂、AI 提效、AIGC 数字人和自动发布接入真实运营链路。</p>
+          </article>
+        </div>
+        <p class="pullquote reveal" data-editable>这三个关键词，也对应我从内容执行到系统搭建、从工具使用到 AI Native 运营的成长路径。</p>
+      </div>
+      <aside class="speaker-note">
+        <p>这里承接目录。建议说：我不想把 6 个月讲成流水账，所以先用三个关键词概述。Growth Driver 是结果，Builder 是系统，AI Native 是方法和进化。</p>
+      </aside>
+    </section>
+
+    <section class="slide dark-slide" id="slide-07" data-kicker="Section 1">
+      <span class="folio">07 / 23</span>
+      <div class="slide-content section-title">
+        <p class="eyebrow reveal" data-editable>重点项目 01</p>
+        <h2 class="reveal en" data-editable>Growth Driver</h2>
+        <p class="reveal" data-editable>让内容工作对增长结果负责，并且能解释结果背后的原因。</p>
+      </div>
+      <div class="section-number en">01</div>
+      <aside class="speaker-note">
+        <p>进入第一部分。建议用一句话定调：增长不是多发几条内容，而是建立选题、生产、发布、复盘、迭代的闭环，并持续知道为什么某些内容有效。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-08" data-kicker="Growth Loop">
+      <span class="folio">08 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>账号增长闭环</p>
+          <h2 data-editable>从“发内容”到“跑增长系统”。</h2>
+        </div>
+        <div class="timeline reveal-scale">
+          <div class="timeline-step">
+            <strong data-editable>选题</strong>
+            <span data-editable>前沿洞察、热点资讯、权威访谈、产品场景进入选题池。</span>
+          </div>
+          <div class="timeline-step">
+            <strong data-editable>生产</strong>
+            <span data-editable>脚本、封面、标题、长短视频、图文和公众号协同生产。</span>
+          </div>
+          <div class="timeline-step">
+            <strong data-editable>发布</strong>
+            <span data-editable>视频号、小红书、抖音、快手、公众号分平台适配。</span>
+          </div>
+          <div class="timeline-step">
+            <strong data-editable>复盘</strong>
+            <span data-editable>观察点击、完播、互动、涨粉和平台推荐表现。</span>
+          </div>
+          <div class="timeline-step">
+            <strong data-editable>迭代</strong>
+            <span data-editable>沉淀高命中选题、开头钩子、封面标题和内容结构。</span>
+          </div>
+        </div>
+        <div class="insight-strip reveal">
+          <p class="insight" data-editable><strong>产出规模</strong>116 条有效内容记录，覆盖短视频、长视频、公众号长文、PR、产品文案等形态。</p>
+          <p class="insight" data-editable><strong>策略变化</strong>形成“50% 深度实测 + 30% 大厂热点 + 20% 观点”的内容结构。</p>
+          <p class="insight" data-editable><strong>复盘重点</strong>把播放量拆到标题、封面、前 3 秒、完播率、互动率和涨粉转化。</p>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这页讲方法。可以强调：我不是以发布量作为唯一目标，而是让每次发布都能反哺下一次选题和表达方式。这样内容工作才从任务制变成系统制。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-09" data-kicker="Data Insight">
+      <span class="folio">09 / 23</span>
+      <div class="slide-content wide-two-col">
+        <div class="headline-stack reveal-left">
+          <p class="eyebrow" data-editable>数据洞察</p>
+          <h2 data-editable>视频号是主增长阵地，小红书承担破圈和工具热点。</h2>
+          <ul class="bullet-list">
+            <li data-editable>116 条内容里，105 条最优平台来自视频号。</li>
+            <li data-editable>视频号更适合权威人物、AI 前沿、结构化解读和深度长视频。</li>
+            <li data-editable>小红书在工具热点、强标题、强封面、强互动内容上更敏感。</li>
+            <li data-editable>产品内容不只看播放，还要看销售素材、客户教育和线索承接价值。</li>
+          </ul>
+        </div>
+        <figure class="evidence-frame reveal-scale">
+          <img src="../图片视频素材/内容管理体系搭建/视频数据分析表.png" alt="视频数据分析表截图">
+          <figcaption class="caption" data-editable>证据：多平台内容数据分析表</figcaption>
+        </figure>
+      </div>
+      <aside class="speaker-note">
+        <p>这一页避免只说我看数据，要说明看出了什么。建议补充：这让我明确不同平台的任务不同，视频号负责专业心智和增长，小红书负责热点破圈，产品内容负责销售可复用素材。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-10" data-kicker="Content Formula">
+      <span class="folio">10 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>爆款与内容公式</p>
+          <h2 data-editable>增长不是平均分布，而是少数高命中选题拉动。</h2>
+        </div>
+        <div class="formula-dashboard reveal-scale">
+          <div class="dashboard-panel">
+            <h3 data-editable>Top 内容贡献</h3>
+            <div class="metric-row">
+              <div class="metric">
+                <div class="metric-value" data-editable>56.0%</div>
+                <div class="metric-label" data-editable>Top 20 播放占比</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" data-editable>61.7%</div>
+                <div class="metric-label" data-editable>Top 20 涨粉占比</div>
+              </div>
+            </div>
+            <p class="insight" data-editable><strong>判断</strong>增长来自高命中选题，而不是平均用力。</p>
+          </div>
+          <div class="dashboard-panel">
+            <h3 data-editable>三类内容贡献播放</h3>
+            <div class="content-bars">
+              <div class="bar-item"><span data-editable>前沿资讯</span><div class="bar-track" style="--value: 100%"><span></span></div><strong data-editable>142,858</strong></div>
+              <div class="bar-item"><span data-editable>结构化内容</span><div class="bar-track" style="--value: 86%"><span></span></div><strong data-editable>122,783</strong></div>
+              <div class="bar-item"><span data-editable>利他性内容</span><div class="bar-track" style="--value: 80%"><span></span></div><strong data-editable>114,206</strong></div>
+            </div>
+            <p class="pullquote" data-editable>有效内容的底层公式是：信息增量 + 结构化表达 + 对用户有用。</p>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>讲这页时可以用一句判断：内容增长不是靠平均用力，而是要提高命中率。Top 20 的集中度说明，后续应该把高表现内容拆成模板，再迁移到不同平台和业务场景。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-11" data-kicker="Matrix & Business">
+      <span class="folio">11 / 23</span>
+      <div class="slide-content wide-two-col">
+        <div class="headline-stack reveal-left">
+          <p class="eyebrow" data-editable>矩阵与业务协同</p>
+          <h2 data-editable>从单账号增长，走向业务协同型内容运营。</h2>
+          <ul class="bullet-list">
+            <li data-editable>国内矩阵拆成官号、场景账号、AIGC 数字人账号三类定位。</li>
+            <li data-editable>参与产品、测试、客户需求沟通，把产品能力转成可发布表达。</li>
+            <li data-editable>完成 16 条来自视频号、公众号等新媒体平台的线索转介。</li>
+            <li data-editable>推动内容从曝光资产升级为销售素材、案例素材和客户教育素材。</li>
+          </ul>
+        </div>
+        <figure class="evidence-frame reveal-scale">
+          <img src="../图片视频素材/线索商机登记表.png" alt="线索商机登记表截图">
+          <figcaption class="caption" data-editable>证据：线索商机登记表</figcaption>
+        </figure>
+      </div>
+      <aside class="speaker-note">
+        <p>这里要体现业务协同。可以说：我开始把内容和业务连接起来，产品向内容不只评价播放量，也要看它是否能支持销售复用、客户理解和线索承接。</p>
+      </aside>
+    </section>
+
+    <section class="slide dark-slide" id="slide-12" data-kicker="Section 2">
+      <span class="folio">12 / 23</span>
+      <div class="slide-content section-title">
+        <p class="eyebrow reveal" data-editable>重点项目 02</p>
+        <h2 class="reveal en" data-editable>Builder</h2>
+        <p class="reveal" data-editable>把个人经验沉淀为团队可复用的流程、资产和外宣基础设施。</p>
+      </div>
+      <div class="section-number en">02</div>
+      <aside class="speaker-note">
+        <p>第二部分开始讲搭系统。建议强调：如果一个运营只靠个人经验，产能和质量都会有天花板；我做 SOP、知识库和品牌基础设施，是为了让团队可以持续复用。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-13" data-kicker="Content SOP">
+      <span class="folio">13 / 23</span>
+      <div class="slide-content wide-two-col">
+        <div class="headline-stack reveal-left">
+          <p class="eyebrow" data-editable>内容 SOP</p>
+          <h2 data-editable>把“临时追热点”，变成可交接的内容生产流程。</h2>
+          <ul class="bullet-list">
+            <li data-editable>建立选题库、灵感库、热点库、竞品库和老板关注方向池。</li>
+            <li data-editable>沉淀热词验证、标题拆解、封面拆解、开头钩子和发布时间验证方法。</li>
+            <li data-editable>将短视频、长视频、公众号、PR、产品文案纳入同一套生产链路。</li>
+            <li data-editable>让实习生、剪辑、设计、排版按模块参与，降低返工和沟通成本。</li>
+          </ul>
+        </div>
+        <figure class="evidence-frame reveal-scale">
+          <img src="../图片视频素材/内容SOP/选题sop.png" alt="选题 SOP 截图">
+          <figcaption class="caption" data-editable>证据：选题 SOP 与来源池</figcaption>
+        </figure>
+      </div>
+      <aside class="speaker-note">
+        <p>这页讲可复制。建议补一句：AI 行业热点很快，如果每次都从零开始找资料，团队会很疲惫；SOP 的价值是让高频动作变成低摩擦动作。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-14" data-kicker="Content Assets">
+      <span class="folio">14 / 23</span>
+      <div class="slide-content artifact-spread">
+        <div class="headline-stack reveal-left">
+          <p class="eyebrow" data-editable>内容资产体系</p>
+          <h2 data-editable>把一次内容，变成可以反复调用的资产。</h2>
+          <div class="project-grid">
+            <article class="project-card">
+              <h3 data-editable>数据资产</h3>
+              <p data-editable>用内容数据表追踪播放、互动、涨粉、平台表现和复盘动作。</p>
+            </article>
+            <article class="project-card">
+              <h3 data-editable>知识资产</h3>
+              <p data-editable>沉淀公司介绍、产品知识、案例、客户需求和营销文案。</p>
+            </article>
+            <article class="project-card">
+              <h3 data-editable>栏目资产</h3>
+              <p data-editable>AI 周报、前沿解读、权威访谈、产品场景内容持续复用。</p>
+            </article>
+          </div>
+        </div>
+        <div class="evidence-mosaic reveal-scale">
+          <figure class="evidence-tile"><img src="../图片视频素材/内容SOP/爆款标题拆解分析.png" alt="爆款标题拆解分析截图"><span data-editable>爆款标题拆解</span></figure>
+          <figure class="evidence-tile contain"><img src="../图片视频素材/内容管理体系搭建/系列长文目录.png" alt="系列长文目录截图"><span data-editable>系列长文</span></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/内容SOP/ai视频素材sop.png" alt="AI 视频素材 SOP 截图"><span data-editable>AI 视频素材 SOP</span></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/内容SOP/短视频文案sop文档.png" alt="短视频文案 SOP 截图"><span data-editable>SOP 文档</span></figure>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>建议强调资产化的意义：不是每条内容发完就结束，而是让它后续可以转成公众号、PR、销售话术、官网案例、海外内容或产品素材。右侧 SOP 图只保留证据感，用来说明这些方法不是口头经验，而是被沉淀成了可复用文件。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-15" data-kicker="Brand Infrastructure">
+      <span class="folio">15 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>品牌传播基础设施</p>
+          <h2 data-editable>让公司对外表达从零散输出，变成多触点协同。</h2>
+        </div>
+        <div class="project-grid reveal-scale">
+          <article class="project-card">
+            <p class="mini-label" data-editable>外宣入口</p>
+            <h3 data-editable>小程序 V1</h3>
+            <p data-editable>完成公司介绍小程序文案、结构迭代、设计跟进和上线推进。</p>
+          </article>
+          <article class="project-card">
+            <p class="mini-label" data-editable>长期入口</p>
+            <h3 data-editable>官网与 SEO</h3>
+            <p data-editable>推进百度、Google、Bing 收录，沟通备案、Schema 和站点地图。</p>
+          </article>
+          <article class="project-card">
+            <p class="mini-label" data-editable>信任入口</p>
+            <h3 data-editable>PR 与活动</h3>
+            <p data-editable>覆盖中软大会、AI 沙龙、研讨会、商会周年庆、OPC 大会等场景。</p>
+          </article>
+        </div>
+        <p class="pullquote reveal" data-editable>品牌不是只在公众号里被看见，也要在搜索、活动、销售沟通和客户转发里被稳定理解。</p>
+      </div>
+      <aside class="speaker-note">
+        <p>这里要主动解释为什么不是杂事。建议说：这些工作短期可能不像播放量那样显眼，但它们会影响客户、合作伙伴和活动受众如何认识公司，是长期信任资产。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-16" data-kicker="Collaboration">
+      <span class="folio">16 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>协同能力</p>
+          <h2 data-editable>让不同角色进入同一条内容生产线。</h2>
+        </div>
+        <div class="timeline reveal-scale">
+          <div class="timeline-step"><strong data-editable>实习生</strong><span data-editable>热点盯盘、封面收集、排版、海外发布和媒介资料。</span></div>
+          <div class="timeline-step"><strong data-editable>剪辑/设计</strong><span data-editable>脚本、封面、视频素材和发布节奏按节点交接。</span></div>
+          <div class="timeline-step"><strong data-editable>产品/测试</strong><span data-editable>产品能力、客户场景、功能边界和真实使用问题进入素材池。</span></div>
+          <div class="timeline-step"><strong data-editable>技术</strong><span data-editable>官网收录、自动发布接口、AI 内容工厂链路和工具验证协同推进。</span></div>
+          <div class="timeline-step"><strong data-editable>销售/客户</strong><span data-editable>线索、客户问题、案例需求和销售素材形成反馈闭环。</span></div>
+        </div>
+        <p class="pullquote reveal" data-editable>我开始承担的不只是“内容交付”，还有流程组织、资料沉淀和跨部门推进。</p>
+      </div>
+      <aside class="speaker-note">
+        <p>这页可以自然过渡到个人能力：作为主管，不能只证明自己能做，还要证明自己能把其他角色组织进流程，让团队产能和质量更稳定。</p>
+      </aside>
+    </section>
+
+    <section class="slide dark-slide" id="slide-17" data-kicker="Section 3">
+      <span class="folio">17 / 23</span>
+      <div class="slide-content section-title">
+        <p class="eyebrow reveal" data-editable>重点项目 03</p>
+        <h2 class="reveal en" data-editable>AI Native</h2>
+        <p class="reveal" data-editable>用真实运营场景验证 AI 工具价值，让内容生产链路更高效、更可规模化。</p>
+      </div>
+      <div class="section-number en">03</div>
+      <aside class="speaker-note">
+        <p>第三部分突出你的差异化。建议说：公司本身是 AI 公司，所以运营不能只讲 AI，也要把 AI 用到自己的工作流里。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-18" data-kicker="AI Content Factory">
+      <span class="folio">18 / 23</span>
+      <div class="slide-content wide-two-col">
+        <div class="headline-stack reveal-left">
+          <p class="eyebrow" data-editable>AI 内容工厂</p>
+          <h2 data-editable>把内容生产拆成可验证、可合并、可提效的模块。</h2>
+          <ul class="bullet-list">
+            <li data-editable>数据采集与选题分析模块已形成闭环。</li>
+            <li data-editable>内容创作与自动发布模块推进至收尾和合并阶段。</li>
+            <li data-editable>已实现从内容生产到微信公众号发布的完整链路。</li>
+            <li data-editable>下一步继续扩展到多平台发布、排期和复盘提醒。</li>
+          </ul>
+        </div>
+        <div class="agent-gallery reveal-scale">
+          <figure class="evidence-tile"><img src="../图片视频素材/AI内容工厂/内容创作与自动分发agent首页.png" alt="AI 内容工厂首页截图"><span data-editable>首页</span></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/AI内容工厂/数据采集与选题分析agent1.png" alt="数据采集与选题分析截图"><span data-editable>选题分析</span></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/AI内容工厂/内容创作与自动分发agent工作台.png" alt="内容创作与自动分发工作台截图"><span data-editable>工作台</span></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/AI内容工厂/批量发布到公众号.png" alt="批量发布到公众号截图"><span data-editable>公众号闭环</span></figure>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这页注意不要讲成技术细节。重点是：我用真实运营场景验证 AI 提效，目前微信公众号方向已经跑通闭环。低风险、高重复环节优先自动化，高判断、高品牌风险环节保留人工审核。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-19" data-kicker="AIGC Human">
+      <span class="folio">19 / 23</span>
+      <div class="slide-content two-col">
+        <div class="headline-stack reveal-left">
+          <p class="eyebrow" data-editable>AIGC 数字人</p>
+          <h2 data-editable>不是追新概念，而是验证哪种新形态真正可落地。</h2>
+          <ul class="bullet-list">
+            <li data-editable>系统测试 18 个数字人平台，比较自然度、稳定性、费用和限制。</li>
+            <li data-editable>验证“真人拍摄 + 后期替换数字人形象”的混合方案。</li>
+            <li data-editable>沉淀数字人资产库、形象库、对标账号库和内容栏目方法。</li>
+            <li data-editable>AIGC 小号会围绕智能体形象、人格识别度和稳定栏目持续运营。</li>
+          </ul>
+        </div>
+        <div class="portrait-grid reveal-scale">
+          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/司南三视图.jpeg" alt="司南真人三视图"></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/天鹅三视图.jpeg" alt="天鹅真人三视图"></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/蒙特卡罗三视图.jpeg" alt="蒙特卡罗真人三视图"></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/梵高三视图.jpeg" alt="梵高真人三视图"></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/特劳特三视图.jpeg" alt="特劳特真人三视图"></figure>
+          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/思澄三视图.jpeg" alt="思澄真人三视图"></figure>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这页可以表现出理性判断：不是看到新工具就全量投入，而是测试成本、自然度和稳定性。未来 AIGC 小号的重点，是把公司的智能体形象和相似资产体系推出去，让更多人认识这些角色。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-20" data-kicker="Personal Growth">
+      <span class="folio">20 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>个人成长</p>
+          <h2 data-editable>这 6 个月，我最大的成长，是开始用 AI Native 的方式重构运营工作。</h2>
+        </div>
+        <div class="growth-grid reveal-scale">
+          <article class="growth-card">
+            <h3 data-editable>从执行者到增长负责人</h3>
+            <p data-editable>不只完成发布，而是从账号目标倒推内容策略、平台定位和复盘机制。</p>
+          </article>
+          <article class="growth-card">
+            <h3 data-editable>从内容生产到资产建设</h3>
+            <p data-editable>把选题、脚本、知识库、案例、PR 和外宣材料沉淀为可复用资产。</p>
+          </article>
+          <article class="growth-card">
+            <h3 data-editable>从工具使用到 AI Native</h3>
+            <p data-editable>把 AI 内容工厂、数字人、AI 剪辑和自动发布接入真实运营链路。</p>
+          </article>
+        </div>
+        <div class="insight-strip reveal">
+          <p class="insight" data-editable><strong>仍需补齐 1</strong>把增长指标和线索、销售反馈打得更通。</p>
+          <p class="insight" data-editable><strong>仍需补齐 2</strong>提升团队管理节奏，让实习生和协作角色更稳定产出。</p>
+          <p class="insight" data-editable><strong>仍需补齐 3</strong>把 AI 内容工厂从可用链路推进到稳定 MVP。</p>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>个人成长页要真诚，不要只讲优点。建议主动说：我最大的变化不是会做更多工具，而是开始用 AI Native 的方法重新设计运营链路。接下来要继续补齐增长和业务绑定、团队协作标准、AI 工具稳定化。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-21" data-kicker="Future 1">
+      <span class="folio">21 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>未来规划 01</p>
+          <h2 data-editable>账号矩阵与 SOP：把不同账号变成可分工、可复盘的增长阵地。</h2>
+        </div>
+        <div class="future-grid reveal-scale">
+          <article class="future-card">
+            <h3 data-editable>行业洞察号</h3>
+            <p data-editable>聚焦 AI 行业变化、前沿资讯和结构化解读，建立专业认知入口。</p>
+          </article>
+          <article class="future-card">
+            <h3 data-editable>场景号</h3>
+            <p data-editable>围绕产品场景、客户问题和案例内容，服务销售复用和线索承接。</p>
+          </article>
+          <article class="future-card">
+            <h3 data-editable>AI 趋势/AIGC 号</h3>
+            <p data-editable>沉淀智能体形象资产、对标账号、栏目方法和人格识别度。</p>
+          </article>
+        </div>
+        <div class="artifact-spread reveal">
+          <figure class="evidence-frame">
+            <img src="../图片视频素材/未来规划/未来规划-国内矩阵账号.png" alt="国内账号矩阵规划截图">
+            <figcaption class="caption" data-editable>未来重点：国内账号矩阵规划</figcaption>
+          </figure>
+          <p class="pullquote" data-editable>在过程中沉淀 SOP 或 Skills。</p>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这页讲未来账号布局。建议说：国内账号不再只靠一个官号承载所有内容，而是拆成行业洞察、场景和 AI 趋势/AIGC 三类。我的职责是在过程中持续沉淀 SOP 或 Skills，让不同实习生可以按方向稳定运营。</p>
+      </aside>
+    </section>
+
+    <section class="slide" id="slide-22" data-kicker="Future 2">
+      <span class="folio">22 / 23</span>
+      <div class="slide-content">
+        <div class="headline-stack reveal">
+          <p class="eyebrow" data-editable>未来规划 02</p>
+          <h2 data-editable>AI 自动化与海外运营：把重复链路系统化，把判断时间还给策略。</h2>
+        </div>
+        <div class="system-map reveal-scale">
+          <div class="system-node" data-editable>热点抓取</div>
+          <div class="system-node" data-editable>选题分析</div>
+          <div class="system-node" data-editable>内容生成</div>
+          <div class="system-node" data-editable>多平台发布</div>
+          <div class="system-node" data-editable>复盘提醒</div>
+        </div>
+        <div class="artifact-spread reveal">
+          <div class="future-grid">
+            <article class="future-card">
+              <h3 data-editable>自动化系统</h3>
+              <p data-editable>从微信公众号闭环继续扩展到更多平台文章发布、排期和复盘。</p>
+            </article>
+            <article class="future-card">
+              <h3 data-editable>海外运营</h3>
+              <p data-editable>推进海外官号、社区运营、邮件/newsletter 和竞品语料库内容复用。</p>
+            </article>
+            <article class="future-card">
+              <h3 data-editable>人工把控</h3>
+              <p data-editable>AI 处理重复链路，人工保留品牌判断、内容审核和方向把控。</p>
+            </article>
+          </div>
+          <figure class="evidence-frame">
+            <img src="../图片视频素材/海外社媒运营/推特对标语料库搭建.png" alt="海外社媒语料库截图">
+            <figcaption class="caption" data-editable>未来重点：海外社媒语料库与内容复用</figcaption>
+          </figure>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这页讲未来自动化和海外。建议说：目前微信公众号方向已经跑通，下一步希望扩展到更多平台；海外方面会从官号、社区、邮件和竞品语料库开始做，AI 负责重复链路，人负责判断、审核和方向。</p>
+      </aside>
+    </section>
+
+    <section class="slide dark-slide" id="slide-23" data-kicker="Closing">
+      <span class="folio">23 / 23</span>
+      <div class="slide-content promise">
+        <div class="headline-stack reveal-left">
+          <p class="eyebrow" data-editable>转正后的岗位价值</p>
+          <h2 data-editable>我希望继续承担一个更完整的角色：让内容成为公司的增长系统、品牌系统和 AI Native 实验场。</h2>
+          <div class="tagline">
+            <span class="tag en" data-editable>Growth Driver</span>
+            <span class="tag en" data-editable>Builder</span>
+            <span class="tag en" data-editable>AI Native</span>
+          </div>
+        </div>
+        <div class="headline-stack reveal-scale">
+          <p class="pullquote" data-editable>接下来，我会把已经跑通的工作继续做深：把增长指标做清，把内容资产做厚，把 AI 提效做稳，把业务协同做实。</p>
+          <div class="rule"></div>
+          <p data-editable>谢谢。</p>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>结尾建议控制在 50 秒内。不要再加新信息，而是回到三个关键词。最后一句可以是：我希望转正后继续把内容做成公司可持续复用的增长系统。</p>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    /* ===========================================
+       SLIDE PRESENTATION CONTROLLER
+       =========================================== */
+    class SlidePresentation {
+      constructor() {
+        this.slides = Array.from(document.querySelectorAll(".slide"));
+        this.currentSlide = 0;
+        this.progressBar = document.getElementById("progressBar");
+        this.navDotsContainer = document.getElementById("navDots");
+        this.sectionNavContainer = document.getElementById("sectionNav");
+        this.sections = [
+          { label: "工作概述", start: 5, end: 5, targetIndex: 5 },
+          { label: "重点项目", start: 6, end: 18, targetIndex: 6 },
+          { label: "个人成长", start: 19, end: 19, targetIndex: 19 },
+          { label: "未来规划", start: 20, end: 22, targetIndex: 20 },
+        ];
+        this.notesPanel = document.getElementById("notesPanel");
+        this.notesContent = document.getElementById("notesContent");
+        this.setupIntersectionObserver();
+        this.setupKeyboardNav();
+        this.setupTouchNav();
+        this.setupWheelNav();
+        this.setupProgressBar();
+        this.setupNavDots();
+        this.setupSectionNav();
+        this.updateNotes();
+        const initialIndex = this.getInitialSlideIndex();
+        this.goToSlide(initialIndex, false);
+      }
+
+      getInitialSlideIndex() {
+        const hash = window.location.hash.replace("#", "");
+        const index = this.slides.findIndex((slide) => slide.id === hash);
+        return index >= 0 ? index : 0;
+      }
+
+      setupIntersectionObserver() {
+        this.slides.forEach((slide) => {
+          slide.classList.remove("active", "visible");
+          slide.setAttribute("aria-hidden", "true");
+        });
+      }
+
+      setupKeyboardNav() {
+        window.addEventListener("keydown", (event) => {
+          if (document.body.classList.contains("editing") && event.key !== "Escape" && event.key.toLowerCase() !== "e") {
+            return;
+          }
+
+          if (["ArrowDown", "ArrowRight", " ", "PageDown"].includes(event.key)) {
+            event.preventDefault();
+            this.next();
+          }
+
+          if (["ArrowUp", "ArrowLeft", "PageUp"].includes(event.key)) {
+            event.preventDefault();
+            this.previous();
+          }
+
+          if (event.key === "Home") {
+            event.preventDefault();
+            this.goToSlide(0);
+          }
+
+          if (event.key === "End") {
+            event.preventDefault();
+            this.goToSlide(this.slides.length - 1);
+          }
+        });
+      }
+
+      setupTouchNav() {
+        let startY = 0;
+        let endY = 0;
+        window.addEventListener("touchstart", (event) => {
+          startY = event.changedTouches[0].clientY;
+        }, { passive: true });
+        window.addEventListener("touchend", (event) => {
+          endY = event.changedTouches[0].clientY;
+          const delta = startY - endY;
+          if (Math.abs(delta) > 48) {
+            delta > 0 ? this.next() : this.previous();
+          }
+        }, { passive: true });
+      }
+
+      setupWheelNav() {
+        let wheelLock = false;
+        window.addEventListener("wheel", (event) => {
+          if (this.notesPanel.classList.contains("open") && this.notesPanel.contains(event.target)) return;
+          event.preventDefault();
+          if (wheelLock || Math.abs(event.deltaY) < 32) return;
+          wheelLock = true;
+          event.deltaY > 0 ? this.next() : this.previous();
+          window.setTimeout(() => { wheelLock = false; }, 620);
+        }, { passive: false });
+      }
+
+      setupProgressBar() {
+        this.updateProgress();
+      }
+
+      setupNavDots() {
+        this.navDotsContainer.innerHTML = "";
+        this.slides.forEach((_, index) => {
+          const dot = document.createElement("button");
+          dot.className = "nav-dot";
+          dot.type = "button";
+          dot.title = `Slide ${index + 1}`;
+          dot.addEventListener("click", () => this.goToSlide(index));
+          this.navDotsContainer.appendChild(dot);
+        });
+        this.updateDots();
+      }
+
+      setupSectionNav() {
+        this.sectionNavContainer.innerHTML = "";
+        this.sections.forEach((section) => {
+          const item = document.createElement("button");
+          item.className = "section-nav-item";
+          item.type = "button";
+          item.textContent = section.label;
+          item.title = `跳转到${section.label}`;
+          item.addEventListener("click", () => this.goToSlide(section.targetIndex));
+          this.sectionNavContainer.appendChild(item);
+        });
+        this.updateSectionNav();
+      }
+
+      updateProgress() {
+        const progress = ((this.currentSlide + 1) / this.slides.length) * 100;
+        this.progressBar.style.width = `${progress}%`;
+      }
+
+      updateDots() {
+        Array.from(this.navDotsContainer.children).forEach((dot, index) => {
+          dot.classList.toggle("active", index === this.currentSlide);
+        });
+      }
+
+      updateSectionNav() {
+        const shouldShow = this.currentSlide >= 5;
+        this.sectionNavContainer.classList.toggle("visible", shouldShow);
+        Array.from(this.sectionNavContainer.children).forEach((item, index) => {
+          const section = this.sections[index];
+          const isActive = shouldShow && this.currentSlide >= section.start && this.currentSlide <= section.end;
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-current", isActive ? "true" : "false");
+        });
+      }
+
+      updateNotes() {
+        const note = this.slides[this.currentSlide]?.querySelector(".speaker-note");
+        this.notesContent.innerHTML = note ? note.innerHTML : "";
+      }
+
+      goToSlide(index, smooth = true) {
+        const bounded = Math.max(0, Math.min(index, this.slides.length - 1));
+        this.currentSlide = bounded;
+        this.slides.forEach((slide, slideIndex) => {
+          const isActive = slideIndex === bounded;
+          slide.classList.toggle("active", isActive);
+          slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+          if (isActive) slide.classList.add("visible");
+        });
+        if (this.slides[bounded]?.id && window.location.hash !== `#${this.slides[bounded].id}`) {
+          window.history.replaceState(null, "", `#${this.slides[bounded].id}`);
+        }
+        this.updateProgress();
+        this.updateDots();
+        this.updateSectionNav();
+        this.updateNotes();
+      }
+
+      next() {
+        this.goToSlide(this.currentSlide + 1);
+      }
+
+      previous() {
+        this.goToSlide(this.currentSlide - 1);
+      }
+    }
+
+    /* ===========================================
+       INLINE EDITOR
+       =========================================== */
+    class InlineEditor {
+      constructor() {
+        this.storageKey = "probation-review-deck-edits-v2";
+        this.isActive = false;
+        this.editables = Array.from(document.querySelectorAll("[data-editable]"));
+        this.toggle = document.getElementById("editToggle");
+        this.toast = document.getElementById("saveToast");
+        this.load();
+        this.bind();
+      }
+
+      bind() {
+        this.toggle.addEventListener("click", () => this.toggleEditMode());
+        window.addEventListener("keydown", (event) => {
+          if (event.key.toLowerCase() === "e" && !event.metaKey && !event.ctrlKey) {
+            event.preventDefault();
+            this.toggleEditMode();
+          }
+
+          if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "s") {
+            event.preventDefault();
+            this.save();
+            this.showToast("已保存");
+          }
+
+          if (event.key.toLowerCase() === "s" && !event.metaKey && !event.ctrlKey && !this.isActive) {
+            event.preventDefault();
+            this.exportHtml();
+          }
+
+          if (event.key === "Escape" && this.isActive) {
+            this.toggleEditMode(false);
+          }
+        });
+
+        this.editables.forEach((element, index) => {
+          element.dataset.editId = String(index);
+          element.addEventListener("input", () => this.save());
+        });
+
+        document.getElementById("exportToggle").addEventListener("click", () => this.exportHtml());
+      }
+
+      toggleEditMode(force) {
+        this.isActive = typeof force === "boolean" ? force : !this.isActive;
+        document.body.classList.toggle("editing", this.isActive);
+        this.toggle.classList.toggle("active", this.isActive);
+        this.editables.forEach((element) => {
+          element.contentEditable = this.isActive ? "true" : "false";
+        });
+        this.showToast(this.isActive ? "编辑模式" : "演示模式");
+      }
+
+      save() {
+        const payload = {};
+        this.editables.forEach((element, index) => {
+          payload[index] = element.innerHTML;
+        });
+        localStorage.setItem(this.storageKey, JSON.stringify(payload));
+      }
+
+      load() {
+        const raw = localStorage.getItem(this.storageKey);
+        if (!raw) return;
+        try {
+          const payload = JSON.parse(raw);
+          this.editables.forEach((element, index) => {
+            if (payload[index]) element.innerHTML = payload[index];
+          });
+        } catch {
+          localStorage.removeItem(this.storageKey);
+        }
+      }
+
+      exportHtml() {
+        this.save();
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll("[contenteditable]").forEach((element) => {
+          element.removeAttribute("contenteditable");
+        });
+        clone.querySelector("body")?.classList.remove("editing");
+        const html = "<!DOCTYPE html>\n" + clone.outerHTML;
+        const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "probation-review-deck-edited.html";
+        link.click();
+        URL.revokeObjectURL(link.href);
+      }
+
+      showToast(message) {
+        this.toast.textContent = message;
+        this.toast.classList.add("show");
+        window.clearTimeout(this.toastTimer);
+        this.toastTimer = window.setTimeout(() => this.toast.classList.remove("show"), 1100);
+      }
+    }
+
+    /* ===========================================
+       UTILITY CONTROL BEHAVIOR
+       =========================================== */
+    const presentation = new SlidePresentation();
+    window.presentation = presentation;
+    const editor = new InlineEditor();
+    window.editor = editor;
+
+    const hotzone = document.querySelector(".edit-hotzone");
+    const editToggle = document.getElementById("editToggle");
+    const utilityControls = document.getElementById("utilityControls");
+    let hideTimeout = null;
+
+    function showUtilities() {
+      clearTimeout(hideTimeout);
+      editToggle.classList.add("show");
+      utilityControls.classList.add("show");
+    }
+
+    function scheduleHideUtilities() {
+      hideTimeout = setTimeout(() => {
+        if (!editor.isActive) editToggle.classList.remove("show");
+        utilityControls.classList.remove("show");
+      }, 420);
+    }
+
+    hotzone.addEventListener("mouseenter", showUtilities);
+    hotzone.addEventListener("mouseleave", scheduleHideUtilities);
+    editToggle.addEventListener("mouseenter", showUtilities);
+    editToggle.addEventListener("mouseleave", scheduleHideUtilities);
+    utilityControls.addEventListener("mouseenter", showUtilities);
+    utilityControls.addEventListener("mouseleave", scheduleHideUtilities);
+
+    document.getElementById("notesToggle").addEventListener("click", () => {
+      document.getElementById("notesPanel").classList.toggle("open");
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key.toLowerCase() === "n" && !event.metaKey && !event.ctrlKey && !document.body.classList.contains("editing")) {
+        event.preventDefault();
+        document.getElementById("notesPanel").classList.toggle("open");
+      }
+    });
+  </script>
+</body>
+</html>
