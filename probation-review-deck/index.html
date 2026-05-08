@@ -223,6 +223,11 @@
             transition-duration: 0.2s !important;
         }
 
+        .proof-track,
+        .aigc-orbit-track {
+            animation: none !important;
+        }
+
         html {
             scroll-behavior: auto;
         }
@@ -753,6 +758,80 @@
       padding-top: clamp(0.34rem, 0.7vw, 0.62rem);
     }
 
+    .growth-curve.evidence-rich {
+      grid-template-columns: 1fr;
+      gap: clamp(0.62rem, 1.25vw, 1.05rem);
+    }
+
+    .growth-curve.evidence-rich .metric-row {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(0.42rem, 0.95vw, 0.82rem);
+    }
+
+    .proof-carousel {
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.34);
+      padding: clamp(0.45rem, 1vw, 0.78rem);
+      min-height: 0;
+    }
+
+    .proof-track {
+      display: flex;
+      gap: clamp(0.5rem, 1vw, 0.85rem);
+      width: max-content;
+      animation: proof-scroll 24s linear infinite alternate;
+    }
+
+    .proof-carousel:hover .proof-track,
+    .aigc-orbit-gallery:hover .aigc-orbit-track {
+      animation-play-state: paused;
+    }
+
+    .proof-card {
+      position: relative;
+      flex: 0 0 clamp(6.2rem, 10.5vw, 9.4rem);
+      height: clamp(8rem, 24vh, 13.6rem);
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(247, 242, 232, 0.68);
+    }
+
+    .proof-card img,
+    .brand-evidence-card img,
+    .account-shot img,
+    .overseas-shot img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .proof-card span,
+    .brand-evidence-card span,
+    .account-shot span,
+    .overseas-shot span {
+      position: absolute;
+      left: clamp(0.32rem, 0.7vw, 0.58rem);
+      bottom: clamp(0.32rem, 0.7vw, 0.58rem);
+      color: var(--ink);
+      background: rgba(247, 242, 232, 0.88);
+      border: 1px solid rgba(23, 23, 23, 0.12);
+      border-radius: var(--radius);
+      padding: clamp(0.18rem, 0.42vw, 0.32rem) clamp(0.32rem, 0.7vw, 0.54rem);
+      font-size: var(--micro-size);
+      font-weight: 900;
+    }
+
+    @keyframes proof-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-1 * clamp(7rem, 18vw, 15rem))); }
+    }
+
     .insight-strip {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -776,6 +855,97 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: clamp(0.65rem, 1.5vw, 1.4rem);
       align-items: center;
+    }
+
+    .brand-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+      gap: clamp(0.8rem, 2vw, 1.55rem);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .compact-card-stack {
+      display: grid;
+      gap: clamp(0.38rem, 0.82vw, 0.68rem);
+      min-height: 0;
+    }
+
+    .brand-layout .project-card {
+      padding: clamp(0.5rem, 1vw, 0.82rem);
+    }
+
+    .brand-layout .project-card h3 {
+      margin-bottom: clamp(0.22rem, 0.5vw, 0.4rem);
+    }
+
+    .brand-layout .project-card p {
+      line-height: 1.42;
+    }
+
+    .brand-evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: clamp(0.38rem, 0.85vw, 0.7rem);
+      min-height: 0;
+    }
+
+    .brand-evidence-card,
+    .account-shot,
+    .overseas-shot,
+    .orbit-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.36);
+      box-shadow: 0 clamp(0.34rem, 0.8vw, 0.72rem) clamp(0.9rem, 1.8vw, 1.5rem) rgba(23, 23, 23, 0.08);
+    }
+
+    .brand-evidence-card {
+      min-height: clamp(5.2rem, 17vh, 9.4rem);
+    }
+
+    #slide-15 .slide-content {
+      gap: clamp(0.45rem, 1vw, 0.8rem);
+    }
+
+    #slide-15 .brand-layout {
+      grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr);
+    }
+
+    #slide-15 h2 {
+      font-size: clamp(1.8rem, 3.55vw, 3.35rem);
+      line-height: 1.02;
+    }
+
+    #slide-15 .headline-stack {
+      gap: clamp(0.38rem, 0.75vw, 0.62rem);
+    }
+
+    #slide-15 .brand-evidence-grid {
+      height: min(62vh, 610px);
+      align-self: center;
+    }
+
+    #slide-15 .brand-evidence-card {
+      min-height: 0;
+    }
+
+    #slide-15 .pullquote {
+      font-family: var(--font-body);
+      font-size: clamp(0.7rem, 1.08vw, 0.95rem);
+      line-height: 1.45;
+      font-weight: 800;
+      color: var(--muted);
+      padding-top: clamp(0.3rem, 0.7vw, 0.5rem);
+      border-top: 1px solid var(--hairline);
+    }
+
+    .brand-evidence-card.flyer img,
+    .brand-evidence-card.program img {
+      object-fit: cover;
     }
 
     .promise {
@@ -874,7 +1044,7 @@
     }
 
     .formula-dashboard .metric-row {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(7.2rem, 1fr));
       gap: clamp(0.55rem, 1.15vw, 1rem);
     }
 
@@ -884,7 +1054,7 @@
     }
 
     .formula-dashboard .metric-value {
-      font-size: clamp(1.55rem, 3.2vw, 3.2rem);
+      font-size: clamp(1.45rem, 2.7vw, 2.65rem);
       white-space: nowrap;
     }
 
@@ -997,6 +1167,129 @@
       padding: clamp(0.24rem, 0.55vw, 0.42rem);
     }
 
+    .aigc-showcase {
+      justify-content: center;
+    }
+
+    .aigc-orbit-gallery {
+      overflow: hidden;
+      min-height: clamp(11rem, 34vh, 19rem);
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.3);
+      padding: clamp(0.5rem, 1vw, 0.9rem);
+    }
+
+    .aigc-orbit-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.44rem, 0.95vw, 0.82rem);
+      width: max-content;
+      animation: aigc-pan 28s ease-in-out infinite alternate;
+    }
+
+    .orbit-card {
+      flex: 0 0 clamp(5.4rem, 9vw, 8rem);
+      height: clamp(8rem, 30vh, 16.5rem);
+      transform: translateY(var(--y, 0)) rotate(var(--r, 0deg));
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .orbit-card:hover {
+      transform: translateY(var(--y, 0)) rotate(var(--r, 0deg)) scale(1.05);
+      z-index: 2;
+      box-shadow: 0 clamp(0.5rem, 1.3vw, 1.1rem) clamp(1.4rem, 2.8vw, 2.5rem) rgba(23, 23, 23, 0.18);
+    }
+
+    .orbit-card img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .orbit-card.wide {
+      flex-basis: clamp(8.5rem, 14vw, 12.5rem);
+    }
+
+    .aigc-copy-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: clamp(0.7rem, 1.6vw, 1.3rem);
+      align-items: start;
+    }
+
+    .aigc-copy-grid h2 {
+      font-size: clamp(1.25rem, 2.7vw, 2.3rem);
+    }
+
+    .aigc-copy-grid .bullet-list {
+      max-width: none;
+    }
+
+    @keyframes aigc-pan {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-1 * clamp(22rem, 45vw, 40rem))); }
+    }
+
+    .growth-skill-map {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: clamp(0.34rem, 0.78vw, 0.68rem);
+      min-height: 0;
+    }
+
+    .skill-chip {
+      border-top: clamp(0.16rem, 0.38vw, 0.26rem) solid var(--brand-blue);
+      background: rgba(255, 255, 255, 0.32);
+      border-radius: var(--radius);
+      padding: clamp(0.42rem, 0.9vw, 0.72rem);
+      min-width: 0;
+    }
+
+    .skill-chip:nth-child(2n) { border-color: var(--data-orange); }
+    .skill-chip:nth-child(3n) { border-color: var(--tech-cyan); }
+
+    .skill-chip strong {
+      display: block;
+      font-size: clamp(0.72rem, 1vw, 0.92rem);
+      margin-bottom: clamp(0.2rem, 0.42vw, 0.32rem);
+    }
+
+    .skill-chip span {
+      color: var(--muted);
+      font-size: var(--micro-size);
+      line-height: 1.42;
+    }
+
+    .ai-native-callout {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: clamp(0.6rem, 1.2vw, 1rem);
+      align-items: start;
+      border: 1px solid var(--hairline);
+      border-left: clamp(0.18rem, 0.45vw, 0.3rem) solid var(--tech-cyan);
+      border-radius: var(--radius);
+      background: rgba(223, 246, 247, 0.54);
+      padding: clamp(0.58rem, 1.2vw, 0.95rem);
+    }
+
+    .ai-native-callout strong {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.65rem);
+      line-height: 1.05;
+      color: var(--brand-blue);
+      white-space: nowrap;
+    }
+
+    .ai-native-callout p {
+      max-width: none;
+      font-size: var(--small-size);
+      line-height: 1.55;
+    }
+
     .future-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1018,9 +1311,85 @@
       line-height: 1.52;
     }
 
+    .future-proof-board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: clamp(0.5rem, 1.15vw, 0.95rem);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .future-pullquote {
+      font-size: clamp(1.1rem, 2.45vw, 2.05rem);
+      line-height: 1.12;
+      margin-top: clamp(0.35rem, 0.75vw, 0.62rem);
+    }
+
+    .future-plan-shot,
+    .overseas-corpus-shot {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.36);
+      min-height: 0;
+    }
+
+    .future-plan-shot img,
+    .overseas-corpus-shot img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      object-position: top center;
+      display: block;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .account-screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.38rem, 0.85vw, 0.68rem);
+      min-height: 0;
+    }
+
+    .account-shot {
+      height: clamp(8.2rem, 27vh, 14.5rem);
+    }
+
+    .overseas-proof-board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+      gap: clamp(0.55rem, 1.2vw, 1rem);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .overseas-left {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: clamp(0.42rem, 0.9vw, 0.72rem);
+      min-height: 0;
+    }
+
+    .overseas-account-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.34rem, 0.72vw, 0.58rem);
+      min-height: 0;
+    }
+
+    .overseas-shot {
+      height: clamp(4.4rem, 12.5vh, 7.2rem);
+    }
+
+    .overseas-corpus-shot {
+      min-height: clamp(9rem, 29vh, 15rem);
+    }
+
     .system-map {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: clamp(0.38rem, 0.9vw, 0.75rem);
     }
 
@@ -1342,7 +1711,11 @@
       .growth-curve,
       .promise,
       .artifact-spread,
-      .formula-dashboard {
+      .formula-dashboard,
+      .brand-layout,
+      .aigc-copy-grid,
+      .future-proof-board,
+      .overseas-proof-board {
         grid-template-columns: 1fr;
       }
 
@@ -1358,12 +1731,19 @@
       .evidence-mosaic,
       .agent-gallery,
       .portrait-grid,
-      .future-grid {
+      .future-grid,
+      .brand-evidence-grid,
+      .account-screenshot-grid,
+      .overseas-account-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .system-map {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .growth-skill-map {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
       .notes-panel {
@@ -1385,8 +1765,19 @@
       .agent-gallery,
       .future-grid,
       .system-map,
+      .brand-layout,
+      .aigc-copy-grid,
+      .future-proof-board,
+      .overseas-proof-board,
       .opening-meta {
         grid-template-columns: 1fr;
+      }
+
+      .brand-evidence-grid,
+      .account-screenshot-grid,
+      .overseas-account-grid,
+      .growth-skill-map {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .portrait-grid {
@@ -1429,6 +1820,78 @@
     @media (max-width: 900px) {
       .growth-curve .metric-row {
         grid-template-columns: 1fr;
+      }
+
+      #slide-21 .future-proof-board {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      }
+
+      #slide-21 .account-screenshot-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      #slide-21 .account-shot {
+        height: clamp(5rem, 16vh, 8rem);
+      }
+
+      #slide-21 .future-pullquote {
+        font-size: clamp(0.98rem, 2.5vw, 1.45rem);
+      }
+
+      #slide-15 .brand-layout {
+        gap: clamp(0.42rem, 0.9vw, 0.68rem);
+      }
+
+      #slide-15 .brand-layout .project-card {
+        padding: clamp(0.38rem, 0.82vw, 0.58rem);
+      }
+
+      #slide-15 .brand-evidence-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+      }
+
+      #slide-15 .brand-evidence-card {
+        min-height: clamp(4.2rem, 12.8vh, 7.4rem);
+      }
+
+      #slide-15 .pullquote {
+        font-size: clamp(0.98rem, 2.25vw, 1.42rem);
+      }
+
+      #slide-22 .slide-content {
+        gap: clamp(0.32rem, 0.9vw, 0.56rem);
+      }
+
+      #slide-22 .system-map {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(0.24rem, 0.7vw, 0.42rem);
+      }
+
+      #slide-22 .system-node {
+        padding: clamp(0.3rem, 0.76vw, 0.48rem);
+        font-size: clamp(0.54rem, 1.7vw, 0.72rem);
+      }
+
+      #slide-22 .future-card p {
+        font-size: clamp(0.52rem, 1.75vw, 0.66rem);
+        line-height: 1.3;
+      }
+
+      #slide-22 .future-card h3 {
+        font-size: clamp(0.66rem, 2vw, 0.82rem);
+      }
+
+      #slide-22 .overseas-proof-board {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+      }
+
+      #slide-22 .overseas-account-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      #slide-22 .overseas-shot {
+        height: clamp(3rem, 8.2vh, 4.8rem);
       }
     }
 
@@ -1573,7 +2036,7 @@
           <p class="eyebrow" data-editable>核心数据</p>
           <h2 data-editable>先看结果：账号增长进入更陡的曲线。</h2>
         </div>
-        <div class="growth-curve">
+        <div class="growth-curve evidence-rich">
           <div class="metric-row reveal-left">
             <div class="metric">
               <div class="metric-value" data-editable>+1,905</div>
@@ -1592,14 +2055,18 @@
               <div class="metric-label" data-editable>条有效内容记录</div>
             </div>
           </div>
-          <figure class="evidence-frame reveal-scale">
-            <img src="../图片视频素材/账号运营后台截图/3粉丝数据增长曲线变的更陡.jpg" alt="粉丝数据增长曲线截图">
-            <figcaption class="caption" data-editable>证据：视频号粉丝增长曲线明显变陡</figcaption>
-          </figure>
+          <div class="proof-carousel reveal-scale" aria-label="账号运营证据图">
+            <div class="proof-track">
+              <figure class="proof-card"><img src="../图片视频素材/账号运营后台截图/3粉丝数据增长曲线变的更陡.jpg" alt="粉丝数据增长曲线截图"><span data-editable>增长曲线</span></figure>
+              <figure class="proof-card"><img src="../图片视频素材/账号运营后台截图/1视频号主页.jpg" alt="视频号主页截图"><span data-editable>视频号主页</span></figure>
+              <figure class="proof-card"><img src="../图片视频素材/账号运营后台截图/6.2爆款视频展示.jpg" alt="爆款视频展示截图"><span data-editable>爆款展示</span></figure>
+              <figure class="proof-card"><img src="../图片视频素材/账号运营后台截图/2爆款视频.jpg" alt="爆款视频截图"><span data-editable>爆款视频</span></figure>
+            </div>
+          </div>
         </div>
       </div>
       <aside class="speaker-note">
-        <p>这一页用结果抓注意力。建议说：目前核心数据仍沿用附件数据口径，全平台粉丝从 924 到 2,829，净增 1,905，增长 206%。这不是单点爆发，而是通过选题、发布、复盘和平台适配持续迭代出来的增长。</p>
+        <p>这一页用结果抓注意力。建议说：目前核心数据仍沿用附件数据口径，全平台粉丝从 924 到 2,829，净增 1,905，增长 206%。下方几张图作为补充证据，展示增长曲线、视频号主页和爆款内容表现。这不是单点爆发，而是通过选题、发布、复盘和平台适配持续迭代出来的增长。</p>
       </aside>
     </section>
 
@@ -1619,7 +2086,7 @@
           <article class="agenda-card">
             <strong class="en">02</strong>
             <h3 data-editable>重点项目</h3>
-            <p data-editable>围绕增长、系统搭建、AI Native 三组项目展开。</p>
+            <p data-editable>围绕 Growth Driver / Builder / AI Native 三组项目展开。</p>
           </article>
           <article class="agenda-card">
             <strong class="en">03</strong>
@@ -1634,7 +2101,7 @@
         </div>
       </div>
       <aside class="speaker-note">
-        <p>这页用来给评审建立预期。可以说：我会先讲工作概述，再展开重点项目，最后讲个人成长和未来规划。重点不是堆工作量，而是让大家看到我怎么理解这个岗位未来能创造的价值。</p>
+        <p>这页用来给评审建立预期。可以说：我会先讲工作概述，再展开重点项目，最后讲个人成长和未来规划。重点不是罗列事项，而是让大家看到我怎么理解这个岗位未来能创造的价值。</p>
       </aside>
     </section>
 
@@ -1654,7 +2121,7 @@
           <article class="role-card">
             <p class="mini-label en">02</p>
             <h3 class="en" data-editable>Builder</h3>
-            <p data-editable>把内容 SOP、内容资产、知识库、品牌基础设施和协同流程沉淀下来。</p>
+            <p data-editable>搭建可复用的内容运营系统，把 SOP、资产库、品牌基础设施和协同流程沉淀下来。</p>
           </article>
           <article class="role-card">
             <p class="mini-label en">03</p>
@@ -1826,7 +2293,7 @@
           <p class="eyebrow" data-editable>内容 SOP</p>
           <h2 data-editable>把“临时追热点”，变成可交接的内容生产流程。</h2>
           <ul class="bullet-list">
-            <li data-editable>建立选题库、灵感库、热点库、竞品库和老板关注方向池。</li>
+            <li data-editable>建立选题库、灵感库、热点库、竞品库和业务重点方向池。</li>
             <li data-editable>沉淀热词验证、标题拆解、封面拆解、开头钩子和发布时间验证方法。</li>
             <li data-editable>将短视频、长视频、公众号、PR、产品文案纳入同一套生产链路。</li>
             <li data-editable>让实习生、剪辑、设计、排版按模块参与，降低返工和沟通成本。</li>
@@ -1877,32 +2344,40 @@
 
     <section class="slide" id="slide-15" data-kicker="Brand Infrastructure">
       <span class="folio">15 / 23</span>
-      <div class="slide-content">
-        <div class="headline-stack reveal">
+      <div class="slide-content brand-layout">
+        <div class="headline-stack reveal-left">
           <p class="eyebrow" data-editable>品牌传播基础设施</p>
           <h2 data-editable>让公司对外表达从零散输出，变成多触点协同。</h2>
+          <div class="compact-card-stack">
+            <article class="project-card">
+              <p class="mini-label" data-editable>外宣入口</p>
+              <h3 data-editable>小程序 V1</h3>
+              <p data-editable>完成公司介绍小程序文案、结构迭代、设计跟进和上线推进。</p>
+            </article>
+            <article class="project-card">
+              <p class="mini-label" data-editable>长期入口</p>
+              <h3 data-editable>官网与 SEO</h3>
+              <p data-editable>推进百度、Google、Bing 收录，沟通备案、Schema 和站点地图。</p>
+            </article>
+            <article class="project-card">
+              <p class="mini-label" data-editable>信任入口</p>
+              <h3 data-editable>PR 与活动</h3>
+              <p data-editable>覆盖中软大会、AI 沙龙、研讨会、商会周年庆、OPC 大会等场景。</p>
+            </article>
+          </div>
+          <p class="pullquote" data-editable>品牌不是只在公众号里被看见，也要在搜索、活动、销售沟通和客户转发里被稳定理解。</p>
         </div>
-        <div class="project-grid reveal-scale">
-          <article class="project-card">
-            <p class="mini-label" data-editable>外宣入口</p>
-            <h3 data-editable>小程序 V1</h3>
-            <p data-editable>完成公司介绍小程序文案、结构迭代、设计跟进和上线推进。</p>
-          </article>
-          <article class="project-card">
-            <p class="mini-label" data-editable>长期入口</p>
-            <h3 data-editable>官网与 SEO</h3>
-            <p data-editable>推进百度、Google、Bing 收录，沟通备案、Schema 和站点地图。</p>
-          </article>
-          <article class="project-card">
-            <p class="mini-label" data-editable>信任入口</p>
-            <h3 data-editable>PR 与活动</h3>
-            <p data-editable>覆盖中软大会、AI 沙龙、研讨会、商会周年庆、OPC 大会等场景。</p>
-          </article>
+        <div class="brand-evidence-grid reveal-scale">
+          <figure class="brand-evidence-card flyer"><img src="../图片视频素材/中英文宣传单/A4 - 8.jpg" alt="中文宣传单截图"><span data-editable>中文宣传单</span></figure>
+          <figure class="brand-evidence-card flyer"><img src="../图片视频素材/中英文宣传单/A4 - 9.jpg" alt="英文宣传单截图"><span data-editable>英文宣传单</span></figure>
+          <figure class="brand-evidence-card flyer"><img src="../图片视频素材/中英文宣传单/A4 - 10.jpg" alt="宣传单活动物料截图"><span data-editable>活动物料</span></figure>
+          <figure class="brand-evidence-card flyer"><img src="../图片视频素材/中英文宣传单/A4 - 11.jpg" alt="宣传单外宣物料截图"><span data-editable>外宣物料</span></figure>
+          <figure class="brand-evidence-card program"><img src="../图片视频素材/小程序/小程序截图.png" alt="公司介绍小程序截图"><span data-editable>小程序首页</span></figure>
+          <figure class="brand-evidence-card program"><img src="../图片视频素材/小程序/小程序截图2.png" alt="公司介绍小程序内容截图"><span data-editable>小程序内容</span></figure>
         </div>
-        <p class="pullquote reveal" data-editable>品牌不是只在公众号里被看见，也要在搜索、活动、销售沟通和客户转发里被稳定理解。</p>
       </div>
       <aside class="speaker-note">
-        <p>这里要主动解释为什么不是杂事。建议说：这些工作短期可能不像播放量那样显眼，但它们会影响客户、合作伙伴和活动受众如何认识公司，是长期信任资产。</p>
+        <p>这里要主动解释为什么不是杂事。建议说：这些工作短期可能不像播放量那样显眼，但它们会影响客户、合作伙伴和活动受众如何认识公司，是长期信任资产。右侧的中英文宣传单和小程序截图，是对外表达开始统一、可复用的证据。</p>
       </aside>
     </section>
 
@@ -1947,10 +2422,10 @@
           <p class="eyebrow" data-editable>AI 内容工厂</p>
           <h2 data-editable>把内容生产拆成可验证、可合并、可提效的模块。</h2>
           <ul class="bullet-list">
-            <li data-editable>数据采集与选题分析模块已形成闭环。</li>
-            <li data-editable>内容创作与自动发布模块推进至收尾和合并阶段。</li>
-            <li data-editable>已实现从内容生产到微信公众号发布的完整链路。</li>
-            <li data-editable>下一步继续扩展到多平台发布、排期和复盘提醒。</li>
+            <li data-editable>已实现公众号文章从数据采集、选题分析、内容创作到内容分发的 MVP 闭环。</li>
+            <li data-editable>批量发布能力已经跑通，内容生产不再停留在单条人工发布。</li>
+            <li data-editable>后续接入更多平台接口后，可以扩展为多平台内容分发链路。</li>
+            <li data-editable>下一步继续补齐排期、复盘提醒和舆情输入，让系统更稳定。</li>
           </ul>
         </div>
         <div class="agent-gallery reveal-scale">
@@ -1961,34 +2436,43 @@
         </div>
       </div>
       <aside class="speaker-note">
-        <p>这页注意不要讲成技术细节。重点是：我用真实运营场景验证 AI 提效，目前微信公众号方向已经跑通闭环。低风险、高重复环节优先自动化，高判断、高品牌风险环节保留人工审核。</p>
+        <p>这页注意不要讲成技术细节。重点是：我用真实运营场景验证 AI 提效，目前已经实现公众号文章从数据采集、选题分析、内容创作到内容分发的 MVP 闭环，并且支持批量发布。低风险、高重复环节优先自动化，高判断、高品牌风险环节保留人工审核。</p>
       </aside>
     </section>
 
     <section class="slide" id="slide-19" data-kicker="AIGC Human">
       <span class="folio">19 / 23</span>
-      <div class="slide-content two-col">
-        <div class="headline-stack reveal-left">
-          <p class="eyebrow" data-editable>AIGC 数字人</p>
-          <h2 data-editable>不是追新概念，而是验证哪种新形态真正可落地。</h2>
+      <div class="slide-content aigc-showcase">
+        <div class="aigc-orbit-gallery reveal-scale">
+          <div class="aigc-orbit-track">
+            <figure class="orbit-card wide" style="--y: clamp(0.1rem, 0.5vw, 0.4rem); --r: -2deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/司南三视图.jpeg" alt="司南真人三视图"></figure>
+            <figure class="orbit-card wide" style="--y: calc(-1 * clamp(0.2rem, 0.7vw, 0.52rem)); --r: 2deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/天鹅三视图.jpeg" alt="天鹅真人三视图"></figure>
+            <figure class="orbit-card wide" style="--y: clamp(0.2rem, 0.8vw, 0.58rem); --r: -1deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/蒙特卡罗三视图.jpeg" alt="蒙特卡罗真人三视图"></figure>
+            <figure class="orbit-card wide" style="--y: calc(-1 * clamp(0.1rem, 0.5vw, 0.42rem)); --r: 1deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/梵高三视图.jpeg" alt="梵高真人三视图"></figure>
+            <figure class="orbit-card wide" style="--y: clamp(0.16rem, 0.6vw, 0.48rem); --r: -2deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/特劳特三视图.jpeg" alt="特劳特真人三视图"></figure>
+            <figure class="orbit-card wide" style="--y: calc(-1 * clamp(0.2rem, 0.7vw, 0.52rem)); --r: 2deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/思澄三视图.jpeg" alt="思澄真人三视图"></figure>
+            <figure class="orbit-card" style="--y: clamp(0.14rem, 0.55vw, 0.44rem); --r: -1deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/【AIGC账号图文内容储备】/天鹅/1图文/1.6.jpeg" alt="天鹅小红书图文储备 1"></figure>
+            <figure class="orbit-card" style="--y: calc(-1 * clamp(0.2rem, 0.7vw, 0.5rem)); --r: 1deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/【AIGC账号图文内容储备】/天鹅/2图文/2.2.jpeg" alt="天鹅小红书图文储备 2"></figure>
+            <figure class="orbit-card wide" style="--y: clamp(0.2rem, 0.75vw, 0.56rem); --r: -2deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/【AIGC账号图文内容储备】/天鹅/3图文/天鹅-正面.jpeg" alt="天鹅小红书图文储备 3"></figure>
+            <figure class="orbit-card" style="--y: calc(-1 * clamp(0.14rem, 0.55vw, 0.44rem)); --r: 2deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/【AIGC账号图文内容储备】/天鹅/5.jpg" alt="天鹅小红书图文储备 4"></figure>
+            <figure class="orbit-card" style="--y: clamp(0.1rem, 0.5vw, 0.4rem); --r: -1deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/【AIGC账号图文内容储备】/司南/1 (4).jpg" alt="司南小红书图文储备"></figure>
+          </div>
+        </div>
+        <div class="aigc-copy-grid reveal-left">
+          <div class="headline-stack">
+            <p class="eyebrow" data-editable>AIGC 数字人</p>
+            <h2 data-editable>不是追新概念，而是验证哪种新形态真正可落地。</h2>
+          </div>
           <ul class="bullet-list">
             <li data-editable>系统测试 18 个数字人平台，比较自然度、稳定性、费用和限制。</li>
             <li data-editable>验证“真人拍摄 + 后期替换数字人形象”的混合方案。</li>
-            <li data-editable>沉淀数字人资产库、形象库、对标账号库和内容栏目方法。</li>
+            <li data-editable>沉淀数字人资产库、形象库、小红书图文储备和内容栏目方法。</li>
             <li data-editable>AIGC 小号会围绕智能体形象、人格识别度和稳定栏目持续运营。</li>
           </ul>
         </div>
-        <div class="portrait-grid reveal-scale">
-          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/司南三视图.jpeg" alt="司南真人三视图"></figure>
-          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/天鹅三视图.jpeg" alt="天鹅真人三视图"></figure>
-          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/蒙特卡罗三视图.jpeg" alt="蒙特卡罗真人三视图"></figure>
-          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/梵高三视图.jpeg" alt="梵高真人三视图"></figure>
-          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/特劳特三视图.jpeg" alt="特劳特真人三视图"></figure>
-          <figure class="evidence-tile"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/思澄三视图.jpeg" alt="思澄真人三视图"></figure>
-        </div>
       </div>
       <aside class="speaker-note">
-        <p>这页可以表现出理性判断：不是看到新工具就全量投入，而是测试成本、自然度和稳定性。未来 AIGC 小号的重点，是把公司的智能体形象和相似资产体系推出去，让更多人认识这些角色。</p>
+        <p>这页可以表现出理性判断：不是看到新工具就全量投入，而是测试成本、自然度和稳定性。上方画廊展示三视图和小红书图文储备，说明 AIGC 小号不是只有一个形象，而是有资产库、栏目和内容储备。未来重点是把公司的智能体形象和相似资产体系推出去，让更多人认识这些角色。</p>
       </aside>
     </section>
 
@@ -1999,28 +2483,22 @@
           <p class="eyebrow" data-editable>个人成长</p>
           <h2 data-editable>这 6 个月，我最大的成长，是开始用 AI Native 的方式重构运营工作。</h2>
         </div>
-        <div class="growth-grid reveal-scale">
-          <article class="growth-card">
-            <h3 data-editable>从执行者到增长负责人</h3>
-            <p data-editable>不只完成发布，而是从账号目标倒推内容策略、平台定位和复盘机制。</p>
-          </article>
-          <article class="growth-card">
-            <h3 data-editable>从内容生产到资产建设</h3>
-            <p data-editable>把选题、脚本、知识库、案例、PR 和外宣材料沉淀为可复用资产。</p>
-          </article>
-          <article class="growth-card">
-            <h3 data-editable>从工具使用到 AI Native</h3>
-            <p data-editable>把 AI 内容工厂、数字人、AI 剪辑和自动发布接入真实运营链路。</p>
-          </article>
+        <div class="growth-skill-map reveal-scale">
+          <article class="skill-chip"><strong data-editable>项目拆解</strong><span data-editable>把大目标拆成账号、内容、素材、自动化和协同节点。</span></article>
+          <article class="skill-chip"><strong data-editable>解决问题</strong><span data-editable>遇到卡点先定位原因，再用小步验证推进可落地方案。</span></article>
+          <article class="skill-chip"><strong data-editable>AI Native</strong><span data-editable>把 AI 放进真实工作流，而不是停留在工具试用。</span></article>
+          <article class="skill-chip"><strong data-editable>跨部门沟通</strong><span data-editable>把产品、技术、销售和客户问题转成内容输入。</span></article>
+          <article class="skill-chip"><strong data-editable>系统搭建</strong><span data-editable>沉淀 SOP、资产库、数据表和自动化链路。</span></article>
+          <article class="skill-chip"><strong data-editable>团队管理</strong><span data-editable>让实习生和协作角色按方向、节点和标准稳定参与。</span></article>
+          <article class="skill-chip"><strong data-editable>内容策划</strong><span data-editable>从热点、用户问题和业务价值里找到更高命中选题。</span></article>
         </div>
-        <div class="insight-strip reveal">
-          <p class="insight" data-editable><strong>仍需补齐 1</strong>把增长指标和线索、销售反馈打得更通。</p>
-          <p class="insight" data-editable><strong>仍需补齐 2</strong>提升团队管理节奏，让实习生和协作角色更稳定产出。</p>
-          <p class="insight" data-editable><strong>仍需补齐 3</strong>把 AI 内容工厂从可用链路推进到稳定 MVP。</p>
+        <div class="ai-native-callout reveal">
+          <strong data-editable>让我惊喜的是...</strong>
+          <p data-editable>我开始把 Codex 这样的 AI 工具用到真实运营里，例如辅助剪辑音频气口、处理重复劳动，把时间更多留给判断、创意和复盘。未来我会继续尝试 AI 运营、AI 剪辑和自动化工作流。</p>
         </div>
       </div>
       <aside class="speaker-note">
-        <p>个人成长页要真诚，不要只讲优点。建议主动说：我最大的变化不是会做更多工具，而是开始用 AI Native 的方法重新设计运营链路。接下来要继续补齐增长和业务绑定、团队协作标准、AI 工具稳定化。</p>
+        <p>个人成长页要真诚，不只讲“我做了什么”，还要讲“我怎么变得更能承担”。可以说：我在项目拆解、解决问题、AI Native、跨部门沟通、系统搭建、团队管理和内容策划上都有明显升级。让我惊喜的是，AI 不只是内容生成工具，也能帮我处理剪辑气口、格式整理等重复劳动，让我把精力放在判断和策略上。接下来仍要继续补齐增长和业务绑定、团队协作标准、AI 系统稳定化。</p>
       </aside>
     </section>
 
@@ -2045,16 +2523,21 @@
             <p data-editable>沉淀智能体形象资产、对标账号、栏目方法和人格识别度。</p>
           </article>
         </div>
-        <div class="artifact-spread reveal">
-          <figure class="evidence-frame">
+        <div class="future-proof-board reveal">
+          <figure class="future-plan-shot">
             <img src="../图片视频素材/未来规划/未来规划-国内矩阵账号.png" alt="国内账号矩阵规划截图">
             <figcaption class="caption" data-editable>未来重点：国内账号矩阵规划</figcaption>
           </figure>
-          <p class="pullquote" data-editable>在过程中沉淀 SOP 或 Skills。</p>
+          <div class="account-screenshot-grid">
+            <figure class="account-shot"><img src="../图片视频素材/未来规划/3个国内账号截图/官号-行业洞察.jpg" alt="官号行业洞察账号截图"><span data-editable>官号/行业洞察</span></figure>
+            <figure class="account-shot"><img src="../图片视频素材/未来规划/3个国内账号截图/场景号.jpg" alt="场景号账号截图"><span data-editable>场景号</span></figure>
+            <figure class="account-shot"><img src="../图片视频素材/未来规划/3个国内账号截图/AIGC账号.jpg" alt="AIGC 账号截图"><span data-editable>AIGC 账号</span></figure>
+          </div>
         </div>
+        <p class="pullquote future-pullquote reveal" data-editable>在过程中沉淀 SOP 或 Skills。</p>
       </div>
       <aside class="speaker-note">
-        <p>这页讲未来账号布局。建议说：国内账号不再只靠一个官号承载所有内容，而是拆成行业洞察、场景和 AI 趋势/AIGC 三类。我的职责是在过程中持续沉淀 SOP 或 Skills，让不同实习生可以按方向稳定运营。</p>
+        <p>这页讲未来账号布局。建议说：国内账号不再只靠一个官号承载所有内容，而是拆成行业洞察、场景和 AI 趋势/AIGC 三类。左侧是规划图，右侧是三类账号的当前证据。我的职责是在过程中持续沉淀 SOP 或 Skills，让不同实习生可以按方向稳定运营。</p>
       </aside>
     </section>
 
@@ -2070,31 +2553,42 @@
           <div class="system-node" data-editable>选题分析</div>
           <div class="system-node" data-editable>内容生成</div>
           <div class="system-node" data-editable>多平台发布</div>
+          <div class="system-node" data-editable>舆情监控</div>
           <div class="system-node" data-editable>复盘提醒</div>
         </div>
-        <div class="artifact-spread reveal">
-          <div class="future-grid">
-            <article class="future-card">
-              <h3 data-editable>自动化系统</h3>
-              <p data-editable>从微信公众号闭环继续扩展到更多平台文章发布、排期和复盘。</p>
-            </article>
-            <article class="future-card">
-              <h3 data-editable>海外运营</h3>
-              <p data-editable>推进海外官号、社区运营、邮件/newsletter 和竞品语料库内容复用。</p>
-            </article>
-            <article class="future-card">
-              <h3 data-editable>人工把控</h3>
-              <p data-editable>AI 处理重复链路，人工保留品牌判断、内容审核和方向把控。</p>
-            </article>
+        <div class="overseas-proof-board reveal">
+          <div class="overseas-left">
+            <div class="future-grid">
+              <article class="future-card">
+                <h3 data-editable>自动化系统</h3>
+                <p data-editable>从公众号 MVP 闭环继续扩展到多平台发布、排期、复盘提醒和 AI 舆情监控智能体。</p>
+              </article>
+              <article class="future-card">
+                <h3 data-editable>海外运营</h3>
+                <p data-editable>推进海外官号、社区运营、邮件/newsletter 和竞品语料库内容复用。</p>
+              </article>
+              <article class="future-card">
+                <h3 data-editable>人工把控</h3>
+                <p data-editable>AI 处理重复链路，人工保留品牌判断、内容审核和方向把控。</p>
+              </article>
+            </div>
+            <div class="overseas-account-grid">
+              <figure class="overseas-shot"><img src="../图片视频素材/海外社媒运营/海外社媒运营账号/矩阵小号1.jpg" alt="海外矩阵小号 1 截图"><span data-editable>矩阵小号 1</span></figure>
+              <figure class="overseas-shot"><img src="../图片视频素材/海外社媒运营/海外社媒运营账号/矩阵小号2.jpg" alt="海外矩阵小号 2 截图"><span data-editable>矩阵小号 2</span></figure>
+              <figure class="overseas-shot"><img src="../图片视频素材/海外社媒运营/海外社媒运营账号/矩阵小号3.jpg" alt="海外矩阵小号 3 截图"><span data-editable>矩阵小号 3</span></figure>
+              <figure class="overseas-shot"><img src="../图片视频素材/海外社媒运营/海外社媒运营账号/矩阵小号4.jpg" alt="海外矩阵小号 4 截图"><span data-editable>矩阵小号 4</span></figure>
+              <figure class="overseas-shot"><img src="../图片视频素材/海外社媒运营/海外社媒运营账号/官号YouTube.jpg" alt="海外 YouTube 官号截图"><span data-editable>YouTube 官号</span></figure>
+              <figure class="overseas-shot"><img src="../图片视频素材/海外社媒运营/海外社媒运营账号/官号推特.jpg" alt="海外 X 官号截图"><span data-editable>X 官号</span></figure>
+            </div>
           </div>
-          <figure class="evidence-frame">
+          <figure class="overseas-corpus-shot">
             <img src="../图片视频素材/海外社媒运营/推特对标语料库搭建.png" alt="海外社媒语料库截图">
             <figcaption class="caption" data-editable>未来重点：海外社媒语料库与内容复用</figcaption>
           </figure>
         </div>
       </div>
       <aside class="speaker-note">
-        <p>这页讲未来自动化和海外。建议说：目前微信公众号方向已经跑通，下一步希望扩展到更多平台；海外方面会从官号、社区、邮件和竞品语料库开始做，AI 负责重复链路，人负责判断、审核和方向。</p>
+        <p>这页讲未来自动化和海外。建议说：目前微信公众号方向已经跑通，下一步希望扩展到更多平台，同时增加 AI 舆情监控智能体，让热点、竞品和用户反馈更早进入内容系统。海外方面会从官号、社区、邮件和竞品语料库开始做，AI 负责重复链路，人负责判断、审核和方向。</p>
       </aside>
     </section>
 
