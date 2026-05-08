@@ -224,8 +224,14 @@
         }
 
         .proof-track,
-        .aigc-orbit-track {
+        .aigc-orbit-track,
+        .brand-orbit-track {
             animation: none !important;
+        }
+
+        .lightbox-backdrop,
+        .lightbox-image {
+            transition: none !important;
         }
 
         html {
@@ -758,6 +764,134 @@
       padding-top: clamp(0.34rem, 0.7vw, 0.62rem);
     }
 
+    .core-data-slide {
+      justify-content: center;
+    }
+
+    .core-data-board {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(0.6rem, 1.35vw, 1.05rem);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .core-data-copy {
+      display: grid;
+      gap: clamp(0.6rem, 1.25vw, 1rem);
+      min-width: 0;
+    }
+
+    .core-data-copy h2 {
+      font-size: clamp(1.7rem, 3.8vw, 3.85rem);
+      line-height: 0.98;
+    }
+
+    .core-data-copy .muted {
+      font-size: var(--small-size);
+      line-height: 1.55;
+      max-width: min(76vw, 860px);
+    }
+
+    .core-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(0.45rem, 1vw, 0.8rem);
+      min-width: 0;
+    }
+
+    .core-metric {
+      border-top: clamp(0.16rem, 0.42vw, 0.28rem) solid var(--brand-blue);
+      background: rgba(255, 255, 255, 0.34);
+      border-radius: var(--radius);
+      padding: clamp(0.54rem, 1.05vw, 0.86rem);
+      min-width: 0;
+    }
+
+    .core-metric:nth-child(2) { border-color: var(--data-orange); }
+    .core-metric:nth-child(3) { border-color: var(--tech-cyan); }
+    .core-metric:nth-child(4) { border-color: var(--signal-red); }
+
+    .core-metric .value {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.55rem, 3vw, 3.2rem);
+      line-height: 0.95;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .core-metric .label {
+      display: block;
+      color: var(--muted);
+      font-size: var(--small-size);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-top: clamp(0.16rem, 0.38vw, 0.28rem);
+    }
+
+    .phone-proof-wall {
+      display: flex;
+      gap: clamp(0.45rem, 1vw, 0.82rem);
+      align-items: center;
+      overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scrollbar-gutter: stable;
+      padding: clamp(0.18rem, 0.42vw, 0.34rem) 0 clamp(0.4rem, 0.85vw, 0.72rem);
+      min-height: 0;
+    }
+
+    .phone-proof-wall::-webkit-scrollbar {
+      height: clamp(0.26rem, 0.55vw, 0.42rem);
+    }
+
+    .phone-proof-wall::-webkit-scrollbar-track {
+      background: rgba(23, 23, 23, 0.07);
+      border-radius: 999px;
+    }
+
+    .phone-proof-wall::-webkit-scrollbar-thumb {
+      background: rgba(17, 90, 215, 0.55);
+      border-radius: 999px;
+    }
+
+    .phone-proof-card {
+      position: relative;
+      flex: 0 0 clamp(8.8rem, 15.4vw, 14.2rem);
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.44);
+      box-shadow: 0 clamp(0.45rem, 1.2vw, 1rem) clamp(1.2rem, 2.8vw, 2.4rem) rgba(23, 23, 23, 0.1);
+      height: clamp(12rem, 38vh, 23rem);
+      scroll-snap-align: start;
+    }
+
+    .phone-proof-card img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .phone-proof-card span {
+      position: absolute;
+      left: clamp(0.42rem, 0.8vw, 0.68rem);
+      bottom: clamp(0.42rem, 0.8vw, 0.68rem);
+      color: var(--ink);
+      background: rgba(247, 242, 232, 0.9);
+      border: 1px solid rgba(23, 23, 23, 0.12);
+      border-radius: var(--radius);
+      padding: clamp(0.2rem, 0.46vw, 0.34rem) clamp(0.38rem, 0.74vw, 0.58rem);
+      font-size: var(--micro-size);
+      font-weight: 900;
+    }
+
     .growth-curve.evidence-rich {
       grid-template-columns: 1fr;
       gap: clamp(0.62rem, 1.25vw, 1.05rem);
@@ -946,6 +1080,103 @@
     .brand-evidence-card.flyer img,
     .brand-evidence-card.program img {
       object-fit: cover;
+    }
+
+    .brand-orbit-gallery {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.36);
+      min-height: clamp(18rem, 58vh, 36rem);
+      align-self: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-orbit-gallery::before,
+    .brand-orbit-gallery::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: clamp(2.4rem, 6vw, 5rem);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .brand-orbit-gallery::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--paper), rgba(247, 242, 232, 0));
+    }
+
+    .brand-orbit-gallery::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--paper), rgba(247, 242, 232, 0));
+    }
+
+    .brand-orbit-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.55rem, 1.2vw, 1rem);
+      width: max-content;
+      padding: clamp(0.7rem, 1.4vw, 1.1rem);
+      animation: brand-loop 38s linear infinite;
+    }
+
+    .brand-orbit-gallery:hover .brand-orbit-track {
+      animation-play-state: paused;
+    }
+
+    .brand-orbit-card {
+      position: relative;
+      flex: 0 0 clamp(12rem, 19vw, 21rem);
+      height: clamp(16rem, 52vh, 31rem);
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 clamp(0.45rem, 1vw, 0.9rem) clamp(1rem, 2.2vw, 1.8rem) rgba(23, 23, 23, 0.1);
+      transform: translateY(var(--y, 0)) rotate(var(--r, 0deg));
+      transition: transform 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .brand-orbit-card:hover {
+      transform: translateY(var(--y, 0)) rotate(0deg) scale(1.035);
+      box-shadow: 0 clamp(0.7rem, 1.6vw, 1.3rem) clamp(1.5rem, 3.2vw, 2.6rem) rgba(23, 23, 23, 0.15);
+      z-index: 3;
+    }
+
+    .brand-orbit-card.program {
+      flex-basis: clamp(10.5rem, 17vw, 18rem);
+    }
+
+    .brand-orbit-card img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .brand-orbit-card span {
+      position: absolute;
+      left: clamp(0.42rem, 0.8vw, 0.68rem);
+      bottom: clamp(0.42rem, 0.8vw, 0.68rem);
+      color: var(--ink);
+      background: rgba(247, 242, 232, 0.9);
+      border: 1px solid rgba(23, 23, 23, 0.12);
+      border-radius: var(--radius);
+      padding: clamp(0.2rem, 0.46vw, 0.34rem) clamp(0.38rem, 0.74vw, 0.58rem);
+      font-size: var(--micro-size);
+      font-weight: 900;
+    }
+
+    @keyframes brand-loop {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     .promise {
@@ -1236,8 +1467,8 @@
 
     .growth-skill-map {
       display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: clamp(0.34rem, 0.78vw, 0.68rem);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(0.48rem, 1vw, 0.86rem);
       min-height: 0;
     }
 
@@ -1245,7 +1476,7 @@
       border-top: clamp(0.16rem, 0.38vw, 0.26rem) solid var(--brand-blue);
       background: rgba(255, 255, 255, 0.32);
       border-radius: var(--radius);
-      padding: clamp(0.42rem, 0.9vw, 0.72rem);
+      padding: clamp(0.6rem, 1.15vw, 0.95rem);
       min-width: 0;
     }
 
@@ -1254,14 +1485,14 @@
 
     .skill-chip strong {
       display: block;
-      font-size: clamp(0.72rem, 1vw, 0.92rem);
-      margin-bottom: clamp(0.2rem, 0.42vw, 0.32rem);
+      font-size: clamp(0.95rem, 1.45vw, 1.28rem);
+      margin-bottom: clamp(0.28rem, 0.56vw, 0.46rem);
     }
 
     .skill-chip span {
       color: var(--muted);
-      font-size: var(--micro-size);
-      line-height: 1.42;
+      font-size: clamp(0.78rem, 1vw, 0.98rem);
+      line-height: 1.52;
     }
 
     .ai-native-callout {
@@ -1277,17 +1508,18 @@
     }
 
     .ai-native-callout strong {
-      font-family: var(--font-display);
-      font-size: clamp(1rem, 2vw, 1.65rem);
-      line-height: 1.05;
+      font-family: var(--font-body);
+      font-size: clamp(0.9rem, 1.05vw, 1.02rem);
+      line-height: 1.25;
       color: var(--brand-blue);
       white-space: nowrap;
+      font-weight: 900;
     }
 
     .ai-native-callout p {
       max-width: none;
-      font-size: var(--small-size);
-      line-height: 1.55;
+      font-size: clamp(1rem, 1.32vw, 1.24rem);
+      line-height: 1.58;
     }
 
     .future-grid {
@@ -1702,6 +1934,65 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    .slide img {
+      cursor: zoom-in;
+    }
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 10005;
+      pointer-events: none;
+    }
+
+    .image-lightbox.open {
+      pointer-events: auto;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      border: 0;
+      padding: 0;
+      cursor: zoom-out;
+      background: rgba(24, 23, 20, 0);
+      backdrop-filter: blur(0);
+      transition: background 0.28s ease, backdrop-filter 0.28s ease;
+    }
+
+    .image-lightbox.open .lightbox-backdrop {
+      background: rgba(24, 23, 20, 0.58);
+      backdrop-filter: blur(8px);
+    }
+
+    .image-lightbox.closing .lightbox-backdrop {
+      background: rgba(24, 23, 20, 0);
+      backdrop-filter: blur(0);
+    }
+
+    .lightbox-image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 0;
+      max-width: none;
+      max-height: none;
+      object-fit: contain;
+      opacity: 0;
+      transform-origin: top left;
+      border: 1px solid rgba(247, 242, 232, 0.45);
+      border-radius: var(--radius);
+      background: rgba(255, 252, 245, 0.96);
+      box-shadow: 0 2.4rem 5rem rgba(20, 19, 17, 0.42);
+      cursor: zoom-out;
+      will-change: transform, opacity;
+    }
+
+    .image-lightbox.open .lightbox-image {
+      opacity: 1;
+    }
+
     /* ===========================================
        RESPONSIVE REFINEMENTS
        =========================================== */
@@ -1712,6 +2003,7 @@
       .promise,
       .artifact-spread,
       .formula-dashboard,
+      .core-data-board,
       .brand-layout,
       .aigc-copy-grid,
       .future-proof-board,
@@ -1736,6 +2028,11 @@
       .account-screenshot-grid,
       .overseas-account-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .phone-proof-card {
+        flex-basis: clamp(7.6rem, 19vw, 10rem);
+        height: clamp(9rem, 28vh, 12.5rem);
       }
 
       .system-map {
@@ -1765,6 +2062,7 @@
       .agent-gallery,
       .future-grid,
       .system-map,
+      .core-data-board,
       .brand-layout,
       .aigc-copy-grid,
       .future-proof-board,
@@ -1778,6 +2076,11 @@
       .overseas-account-grid,
       .growth-skill-map {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .phone-proof-card {
+        flex-basis: clamp(7rem, 34vw, 9.2rem);
+        height: clamp(8.6rem, 24vh, 11rem);
       }
 
       .portrait-grid {
@@ -1853,6 +2156,19 @@
 
       #slide-15 .brand-evidence-card {
         min-height: clamp(4.2rem, 12.8vh, 7.4rem);
+      }
+
+      #slide-15 .brand-orbit-gallery {
+        min-height: clamp(12.5rem, 41vh, 17rem);
+      }
+
+      #slide-15 .brand-orbit-card {
+        flex-basis: clamp(8.5rem, 24vw, 10.8rem);
+        height: clamp(11.5rem, 36vh, 15rem);
+      }
+
+      #slide-15 .brand-orbit-card.program {
+        flex-basis: clamp(7.8rem, 22vw, 9.8rem);
       }
 
       #slide-15 .pullquote {
@@ -1936,7 +2252,8 @@
       .notes-panel,
       .nav-dots,
       .section-nav,
-      .save-toast {
+      .save-toast,
+      .image-lightbox {
         display: none !important;
       }
     }
@@ -1957,6 +2274,10 @@
     <div id="notesContent"></div>
   </aside>
   <div class="save-toast" id="saveToast">已保存</div>
+  <div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+    <button class="lightbox-backdrop" type="button" aria-label="关闭图片预览"></button>
+    <img class="lightbox-image" id="lightboxImage" alt="">
+  </div>
 
   <main class="deck" id="deck">
     <section class="slide personal-slide" id="slide-01" data-kicker="Hi, I'm Chestnut">
@@ -1978,7 +2299,7 @@
       </aside>
     </section>
 
-    <section class="slide title-slide" id="slide-02" data-kicker="Probation Review">
+<section class="slide title-slide" id="slide-02" data-kicker="Probation Review">
       <span class="folio">02 / 23</span>
       <div class="slide-content">
         <div class="masthead reveal">
@@ -1997,71 +2318,38 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-03" data-kicker="Executive Summary">
+<section class="slide" id="slide-03" data-kicker="Core Data">
       <span class="folio">03 / 23</span>
-      <div class="slide-content two-col">
-        <div class="headline-stack reveal-left">
-          <p class="eyebrow" data-editable>一句话总结</p>
-          <h2 data-editable>我做出的不是一组内容，而是一套增长、品牌和 AI 提效的运营底盘。</h2>
-          <div class="rule"></div>
-          <p data-editable>试用期内，我围绕公司新媒体增长目标、品牌传播目标和产品业务目标，完成了从账号运营到内容资产、从品牌基础设施到 AI 内容工厂的系统搭建。</p>
-        </div>
-        <div class="role-grid reveal-scale">
-          <article class="role-card">
-            <p class="mini-label en">Growth Driver</p>
-            <h3 data-editable>结果可量化</h3>
-            <p data-editable>用数据复盘驱动内容策略，让账号增长从发布动作变成增长闭环。</p>
-          </article>
-          <article class="role-card">
-            <p class="mini-label en">Builder</p>
-            <h3 data-editable>资产可复用</h3>
-            <p data-editable>搭建 SOP、知识库、外宣物料和协同流程，降低团队重复成本。</p>
-          </article>
-          <article class="role-card">
-            <p class="mini-label en">AI Native</p>
-            <h3 data-editable>能力可进化</h3>
-            <p data-editable>用 AI 内容工厂、AIGC 数字人和自动化工具改造内容生产链路。</p>
-          </article>
-        </div>
-      </div>
-      <aside class="speaker-note">
-        <p>这一页的作用是给领导一个判断框架：我不是把所有事情都摊开讲，而是围绕结果、资产和进化三个角度讲贡献。后面的项目都可以回到这三个词。</p>
-      </aside>
-    </section>
-
-    <section class="slide" id="slide-04" data-kicker="Core Data">
-      <span class="folio">04 / 23</span>
-      <div class="slide-content">
-        <div class="headline-stack reveal">
-          <p class="eyebrow" data-editable>核心数据</p>
-          <h2 data-editable>先看结果：账号增长进入更陡的曲线。</h2>
-        </div>
-        <div class="growth-curve evidence-rich">
-          <div class="metric-row reveal-left">
-            <div class="metric">
-              <div class="metric-value" data-editable>+1,905</div>
-              <div class="metric-label" data-editable>全平台粉丝增长</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value" data-editable>+206%</div>
-              <div class="metric-label" data-editable>全平台增长率</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value" data-editable>185,466</div>
-              <div class="metric-label" data-editable>全平台播放量</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value" data-editable>116</div>
-              <div class="metric-label" data-editable>条有效内容记录</div>
+      <div class="slide-content core-data-slide">
+        <div class="core-data-board">
+          <div class="core-data-copy reveal-left">
+            <p class="eyebrow" data-editable>核心数据</p>
+            <h2 data-editable>先看结果：账号增长进入更陡的曲线。</h2>
+            <p class="muted" data-editable>数据不单独说明价值，真正重要的是：增长开始被选题、发布、复盘和平台适配持续驱动。</p>
+            <div class="core-metrics">
+              <div class="core-metric">
+                <span class="value" data-editable>+1,905</span>
+                <span class="label" data-editable>全平台粉丝增长</span>
+              </div>
+              <div class="core-metric">
+                <span class="value" data-editable>+206%</span>
+                <span class="label" data-editable>全平台增长率</span>
+              </div>
+              <div class="core-metric">
+                <span class="value" data-editable>185,466</span>
+                <span class="label" data-editable>全平台播放量</span>
+              </div>
+              <div class="core-metric">
+                <span class="value" data-editable>116</span>
+                <span class="label" data-editable>条有效内容记录</span>
+              </div>
             </div>
           </div>
-          <div class="proof-carousel reveal-scale" aria-label="账号运营证据图">
-            <div class="proof-track">
-              <figure class="proof-card"><img src="../图片视频素材/账号运营后台截图/3粉丝数据增长曲线变的更陡.jpg" alt="粉丝数据增长曲线截图"><span data-editable>增长曲线</span></figure>
-              <figure class="proof-card"><img src="../图片视频素材/账号运营后台截图/1视频号主页.jpg" alt="视频号主页截图"><span data-editable>视频号主页</span></figure>
-              <figure class="proof-card"><img src="../图片视频素材/账号运营后台截图/6.2爆款视频展示.jpg" alt="爆款视频展示截图"><span data-editable>爆款展示</span></figure>
-              <figure class="proof-card"><img src="../图片视频素材/账号运营后台截图/2爆款视频.jpg" alt="爆款视频截图"><span data-editable>爆款视频</span></figure>
-            </div>
+          <div class="phone-proof-wall reveal-scale" aria-label="账号运营证据图">
+            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/3粉丝数据增长曲线变的更陡.jpg" alt="粉丝数据增长曲线截图"><span data-editable>增长曲线</span></figure>
+            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/1视频号主页.jpg" alt="视频号主页截图"><span data-editable>视频号主页</span></figure>
+            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/6.2爆款视频展示.jpg" alt="爆款视频展示截图"><span data-editable>爆款展示</span></figure>
+            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/2爆款视频.jpg" alt="爆款视频截图"><span data-editable>爆款视频</span></figure>
           </div>
         </div>
       </div>
@@ -2070,8 +2358,8 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-05" data-kicker="Agenda">
-      <span class="folio">05 / 23</span>
+<section class="slide" id="slide-04" data-kicker="Agenda">
+      <span class="folio">04 / 23</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
           <p class="eyebrow" data-editable>本次汇报目录</p>
@@ -2105,8 +2393,8 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-06" data-kicker="Three Keywords">
-      <span class="folio">06 / 23</span>
+<section class="slide" id="slide-05" data-kicker="Three Keywords">
+      <span class="folio">05 / 23</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
           <p class="eyebrow" data-editable>工作概述</p>
@@ -2136,7 +2424,39 @@
       </aside>
     </section>
 
-    <section class="slide dark-slide" id="slide-07" data-kicker="Section 1">
+<section class="slide" id="slide-06" data-kicker="Executive Summary">
+      <span class="folio">06 / 23</span>
+      <div class="slide-content two-col">
+        <div class="headline-stack reveal-left">
+          <p class="eyebrow" data-editable>一句话总结</p>
+          <h2 data-editable>我做出的不是一组内容，而是一套增长、品牌和 AI 提效的运营底盘。</h2>
+          <div class="rule"></div>
+          <p data-editable>试用期内，我围绕公司新媒体增长目标、品牌传播目标和产品业务目标，完成了从账号运营到内容资产、从品牌基础设施到 AI 内容工厂的系统搭建。</p>
+        </div>
+        <div class="role-grid reveal-scale">
+          <article class="role-card">
+            <p class="mini-label en">Growth Driver</p>
+            <h3 data-editable>结果可量化</h3>
+            <p data-editable>用数据复盘驱动内容策略，让账号增长从发布动作变成增长闭环。</p>
+          </article>
+          <article class="role-card">
+            <p class="mini-label en">Builder</p>
+            <h3 data-editable>资产可复用</h3>
+            <p data-editable>搭建 SOP、知识库、外宣物料和协同流程，降低团队重复成本。</p>
+          </article>
+          <article class="role-card">
+            <p class="mini-label en">AI Native</p>
+            <h3 data-editable>能力可进化</h3>
+            <p data-editable>用 AI 内容工厂、AIGC 数字人和自动化工具改造内容生产链路。</p>
+          </article>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这一页的作用是给领导一个判断框架：我不是把所有事情都摊开讲，而是围绕结果、资产和进化三个角度讲贡献。后面的项目都可以回到这三个词。</p>
+      </aside>
+    </section>
+
+<section class="slide dark-slide" id="slide-07" data-kicker="Section 1">
       <span class="folio">07 / 23</span>
       <div class="slide-content section-title">
         <p class="eyebrow reveal" data-editable>重点项目 01</p>
@@ -2149,7 +2469,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-08" data-kicker="Growth Loop">
+<section class="slide" id="slide-08" data-kicker="Growth Loop">
       <span class="folio">08 / 23</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
@@ -2189,7 +2509,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-09" data-kicker="Data Insight">
+<section class="slide" id="slide-09" data-kicker="Data Insight">
       <span class="folio">09 / 23</span>
       <div class="slide-content wide-two-col">
         <div class="headline-stack reveal-left">
@@ -2212,7 +2532,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-10" data-kicker="Content Formula">
+<section class="slide" id="slide-10" data-kicker="Content Formula">
       <span class="folio">10 / 23</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
@@ -2250,7 +2570,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-11" data-kicker="Matrix & Business">
+<section class="slide" id="slide-11" data-kicker="Matrix & Business">
       <span class="folio">11 / 23</span>
       <div class="slide-content wide-two-col">
         <div class="headline-stack reveal-left">
@@ -2273,7 +2593,7 @@
       </aside>
     </section>
 
-    <section class="slide dark-slide" id="slide-12" data-kicker="Section 2">
+<section class="slide dark-slide" id="slide-12" data-kicker="Section 2">
       <span class="folio">12 / 23</span>
       <div class="slide-content section-title">
         <p class="eyebrow reveal" data-editable>重点项目 02</p>
@@ -2286,7 +2606,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-13" data-kicker="Content SOP">
+<section class="slide" id="slide-13" data-kicker="Content SOP">
       <span class="folio">13 / 23</span>
       <div class="slide-content wide-two-col">
         <div class="headline-stack reveal-left">
@@ -2309,7 +2629,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-14" data-kicker="Content Assets">
+<section class="slide" id="slide-14" data-kicker="Content Assets">
       <span class="folio">14 / 23</span>
       <div class="slide-content artifact-spread">
         <div class="headline-stack reveal-left">
@@ -2342,7 +2662,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-15" data-kicker="Brand Infrastructure">
+<section class="slide" id="slide-15" data-kicker="Brand Infrastructure">
       <span class="folio">15 / 23</span>
       <div class="slide-content brand-layout">
         <div class="headline-stack reveal-left">
@@ -2367,13 +2687,21 @@
           </div>
           <p class="pullquote" data-editable>品牌不是只在公众号里被看见，也要在搜索、活动、销售沟通和客户转发里被稳定理解。</p>
         </div>
-        <div class="brand-evidence-grid reveal-scale">
-          <figure class="brand-evidence-card flyer"><img src="../图片视频素材/中英文宣传单/A4 - 8.jpg" alt="中文宣传单截图"><span data-editable>中文宣传单</span></figure>
-          <figure class="brand-evidence-card flyer"><img src="../图片视频素材/中英文宣传单/A4 - 9.jpg" alt="英文宣传单截图"><span data-editable>英文宣传单</span></figure>
-          <figure class="brand-evidence-card flyer"><img src="../图片视频素材/中英文宣传单/A4 - 10.jpg" alt="宣传单活动物料截图"><span data-editable>活动物料</span></figure>
-          <figure class="brand-evidence-card flyer"><img src="../图片视频素材/中英文宣传单/A4 - 11.jpg" alt="宣传单外宣物料截图"><span data-editable>外宣物料</span></figure>
-          <figure class="brand-evidence-card program"><img src="../图片视频素材/小程序/小程序截图.png" alt="公司介绍小程序截图"><span data-editable>小程序首页</span></figure>
-          <figure class="brand-evidence-card program"><img src="../图片视频素材/小程序/小程序截图2.png" alt="公司介绍小程序内容截图"><span data-editable>小程序内容</span></figure>
+        <div class="brand-orbit-gallery reveal-scale" aria-label="品牌传播基础设施证据画廊">
+          <div class="brand-orbit-track">
+            <figure class="brand-orbit-card" style="--y: clamp(0.12rem, 0.5vw, 0.42rem); --r: -1deg;"><img src="../图片视频素材/中英文宣传单/A4 - 8.jpg" alt="中文宣传单截图"><span data-editable>中文宣传单</span></figure>
+            <figure class="brand-orbit-card" style="--y: calc(-1 * clamp(0.18rem, 0.6vw, 0.5rem)); --r: 1deg;"><img src="../图片视频素材/中英文宣传单/A4 - 9.jpg" alt="英文宣传单截图"><span data-editable>英文宣传单</span></figure>
+            <figure class="brand-orbit-card" style="--y: clamp(0.18rem, 0.72vw, 0.55rem); --r: -2deg;"><img src="../图片视频素材/中英文宣传单/A4 - 10.jpg" alt="宣传单活动物料截图"><span data-editable>活动物料</span></figure>
+            <figure class="brand-orbit-card" style="--y: calc(-1 * clamp(0.14rem, 0.55vw, 0.44rem)); --r: 2deg;"><img src="../图片视频素材/中英文宣传单/A4 - 11.jpg" alt="宣传单外宣物料截图"><span data-editable>外宣物料</span></figure>
+            <figure class="brand-orbit-card program" style="--y: clamp(0.16rem, 0.6vw, 0.48rem); --r: -1deg;"><img src="../图片视频素材/小程序/小程序截图.png" alt="公司介绍小程序截图"><span data-editable>小程序首页</span></figure>
+            <figure class="brand-orbit-card program" style="--y: calc(-1 * clamp(0.18rem, 0.7vw, 0.5rem)); --r: 1deg;"><img src="../图片视频素材/小程序/小程序截图2.png" alt="公司介绍小程序内容截图"><span data-editable>小程序内容</span></figure>
+            <figure class="brand-orbit-card" aria-hidden="true" style="--y: clamp(0.12rem, 0.5vw, 0.42rem); --r: -1deg;"><img src="../图片视频素材/中英文宣传单/A4 - 8.jpg" alt=""><span>中文宣传单</span></figure>
+            <figure class="brand-orbit-card" aria-hidden="true" style="--y: calc(-1 * clamp(0.18rem, 0.6vw, 0.5rem)); --r: 1deg;"><img src="../图片视频素材/中英文宣传单/A4 - 9.jpg" alt=""><span>英文宣传单</span></figure>
+            <figure class="brand-orbit-card" aria-hidden="true" style="--y: clamp(0.18rem, 0.72vw, 0.55rem); --r: -2deg;"><img src="../图片视频素材/中英文宣传单/A4 - 10.jpg" alt=""><span>活动物料</span></figure>
+            <figure class="brand-orbit-card" aria-hidden="true" style="--y: calc(-1 * clamp(0.14rem, 0.55vw, 0.44rem)); --r: 2deg;"><img src="../图片视频素材/中英文宣传单/A4 - 11.jpg" alt=""><span>外宣物料</span></figure>
+            <figure class="brand-orbit-card program" aria-hidden="true" style="--y: clamp(0.16rem, 0.6vw, 0.48rem); --r: -1deg;"><img src="../图片视频素材/小程序/小程序截图.png" alt=""><span>小程序首页</span></figure>
+            <figure class="brand-orbit-card program" aria-hidden="true" style="--y: calc(-1 * clamp(0.18rem, 0.7vw, 0.5rem)); --r: 1deg;"><img src="../图片视频素材/小程序/小程序截图2.png" alt=""><span>小程序内容</span></figure>
+          </div>
         </div>
       </div>
       <aside class="speaker-note">
@@ -2381,7 +2709,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-16" data-kicker="Collaboration">
+<section class="slide" id="slide-16" data-kicker="Collaboration">
       <span class="folio">16 / 23</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
@@ -2402,7 +2730,7 @@
       </aside>
     </section>
 
-    <section class="slide dark-slide" id="slide-17" data-kicker="Section 3">
+<section class="slide dark-slide" id="slide-17" data-kicker="Section 3">
       <span class="folio">17 / 23</span>
       <div class="slide-content section-title">
         <p class="eyebrow reveal" data-editable>重点项目 03</p>
@@ -2415,7 +2743,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-18" data-kicker="AI Content Factory">
+<section class="slide" id="slide-18" data-kicker="AI Content Factory">
       <span class="folio">18 / 23</span>
       <div class="slide-content wide-two-col">
         <div class="headline-stack reveal-left">
@@ -2440,7 +2768,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-19" data-kicker="AIGC Human">
+<section class="slide" id="slide-19" data-kicker="AIGC Human">
       <span class="folio">19 / 23</span>
       <div class="slide-content aigc-showcase">
         <div class="aigc-orbit-gallery reveal-scale">
@@ -2476,7 +2804,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-20" data-kicker="Personal Growth">
+<section class="slide" id="slide-20" data-kicker="Personal Growth">
       <span class="folio">20 / 23</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
@@ -2502,7 +2830,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-21" data-kicker="Future 1">
+<section class="slide" id="slide-21" data-kicker="Future 1">
       <span class="folio">21 / 23</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
@@ -2541,7 +2869,7 @@
       </aside>
     </section>
 
-    <section class="slide" id="slide-22" data-kicker="Future 2">
+<section class="slide" id="slide-22" data-kicker="Future 2">
       <span class="folio">22 / 23</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
@@ -2592,7 +2920,7 @@
       </aside>
     </section>
 
-    <section class="slide dark-slide" id="slide-23" data-kicker="Closing">
+<section class="slide dark-slide" id="slide-23" data-kicker="Closing">
       <span class="folio">23 / 23</span>
       <div class="slide-content promise">
         <div class="headline-stack reveal-left">
@@ -2628,7 +2956,7 @@
         this.navDotsContainer = document.getElementById("navDots");
         this.sectionNavContainer = document.getElementById("sectionNav");
         this.sections = [
-          { label: "工作概述", start: 5, end: 5, targetIndex: 5 },
+          { label: "工作概述", start: 4, end: 5, targetIndex: 4 },
           { label: "重点项目", start: 6, end: 18, targetIndex: 6 },
           { label: "个人成长", start: 19, end: 19, targetIndex: 19 },
           { label: "未来规划", start: 20, end: 22, targetIndex: 20 },
@@ -2662,6 +2990,10 @@
 
       setupKeyboardNav() {
         window.addEventListener("keydown", (event) => {
+          if (document.getElementById("imageLightbox")?.classList.contains("open")) {
+            return;
+          }
+
           if (document.body.classList.contains("editing") && event.key !== "Escape" && event.key.toLowerCase() !== "e") {
             return;
           }
@@ -2695,6 +3027,10 @@
           startY = event.changedTouches[0].clientY;
         }, { passive: true });
         window.addEventListener("touchend", (event) => {
+          if (document.getElementById("imageLightbox")?.classList.contains("open")) {
+            return;
+          }
+
           endY = event.changedTouches[0].clientY;
           const delta = startY - endY;
           if (Math.abs(delta) > 48) {
@@ -2706,6 +3042,11 @@
       setupWheelNav() {
         let wheelLock = false;
         window.addEventListener("wheel", (event) => {
+          if (document.getElementById("imageLightbox")?.classList.contains("open")) {
+            event.preventDefault();
+            return;
+          }
+
           if (this.notesPanel.classList.contains("open") && this.notesPanel.contains(event.target)) return;
           event.preventDefault();
           if (wheelLock || Math.abs(event.deltaY) < 32) return;
@@ -2758,7 +3099,7 @@
       }
 
       updateSectionNav() {
-        const shouldShow = this.currentSlide >= 5;
+        const shouldShow = this.currentSlide >= 4;
         this.sectionNavContainer.classList.toggle("visible", shouldShow);
         Array.from(this.sectionNavContainer.children).forEach((item, index) => {
           const section = this.sections[index];
@@ -2775,6 +3116,9 @@
 
       goToSlide(index, smooth = true) {
         const bounded = Math.max(0, Math.min(index, this.slides.length - 1));
+        if (window.imageLightbox?.active) {
+          window.imageLightbox.close(false);
+        }
         this.currentSlide = bounded;
         this.slides.forEach((slide, slideIndex) => {
           const isActive = slideIndex === bounded;
@@ -2801,11 +3145,174 @@
     }
 
     /* ===========================================
+       IMAGE LIGHTBOX
+       =========================================== */
+    class ImageLightbox {
+      constructor() {
+        this.root = document.getElementById("imageLightbox");
+        this.backdrop = this.root?.querySelector(".lightbox-backdrop");
+        this.image = document.getElementById("lightboxImage");
+        this.zoomableSelector = ".slide img";
+        this.active = false;
+        this.sourceRect = null;
+        this.currentAnimation = null;
+        this.bind();
+      }
+
+      bind() {
+        if (!this.root || !this.backdrop || !this.image) return;
+
+        document.querySelectorAll(this.zoomableSelector).forEach((img) => {
+          img.classList.add("zoomable-image");
+          img.title = img.title || "点击放大";
+          img.addEventListener("click", (event) => {
+            if (document.body.classList.contains("editing")) return;
+            event.preventDefault();
+            event.stopPropagation();
+            this.open(img);
+          });
+        });
+
+        this.backdrop.addEventListener("click", () => this.close());
+        this.image.addEventListener("click", () => this.close());
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && this.active) {
+            event.preventDefault();
+            this.close();
+          }
+        });
+        window.addEventListener("resize", () => {
+          if (this.active) this.close(false);
+        });
+      }
+
+      getTargetRect(source) {
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const margin = Math.min(viewportWidth, viewportHeight) < 720 ? 20 : 48;
+        const naturalWidth = source.naturalWidth || source.getBoundingClientRect().width || 1;
+        const naturalHeight = source.naturalHeight || source.getBoundingClientRect().height || 1;
+        const ratio = naturalWidth / naturalHeight;
+        const maxWidth = viewportWidth - margin * 2;
+        const maxHeight = viewportHeight - margin * 2;
+        let width = maxWidth;
+        let height = width / ratio;
+
+        if (height > maxHeight) {
+          height = maxHeight;
+          width = height * ratio;
+        }
+
+        return {
+          left: (viewportWidth - width) / 2,
+          top: (viewportHeight - height) / 2,
+          width,
+          height,
+        };
+      }
+
+      setImageRect(rect) {
+        this.image.style.left = `${rect.left}px`;
+        this.image.style.top = `${rect.top}px`;
+        this.image.style.width = `${rect.width}px`;
+        this.image.style.height = `${rect.height}px`;
+      }
+
+      getDelta(from, to) {
+        return {
+          x: from.left - to.left,
+          y: from.top - to.top,
+          scaleX: from.width / to.width,
+          scaleY: from.height / to.height,
+        };
+      }
+
+      async open(source) {
+        if (!this.root || !this.image) return;
+        this.currentAnimation?.cancel();
+        this.active = true;
+        this.sourceRect = source.getBoundingClientRect();
+        const targetRect = this.getTargetRect(source);
+        const delta = this.getDelta(this.sourceRect, targetRect);
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        this.root.classList.remove("closing");
+        this.root.classList.add("open");
+        this.root.setAttribute("aria-hidden", "false");
+        this.image.src = source.currentSrc || source.src;
+        this.image.alt = source.alt || "放大图片预览";
+        this.setImageRect(targetRect);
+
+        if (prefersReducedMotion || !this.image.animate) {
+          this.image.style.transform = "translate(0, 0) scale(1)";
+          return;
+        }
+
+        this.currentAnimation = this.image.animate([
+          {
+            opacity: 0.86,
+            transform: `translate(${delta.x}px, ${delta.y}px) scale(${delta.scaleX}, ${delta.scaleY})`,
+          },
+          {
+            opacity: 1,
+            transform: "translate(0, 0) scale(1)",
+          },
+        ], {
+          duration: 380,
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+          fill: "forwards",
+        });
+
+        await this.currentAnimation.finished.catch(() => {});
+        this.image.style.transform = "translate(0, 0) scale(1)";
+      }
+
+      async close(animated = true) {
+        if (!this.active || !this.root || !this.image) return;
+
+        this.currentAnimation?.cancel();
+        const currentRect = this.image.getBoundingClientRect();
+        const endRect = this.sourceRect || currentRect;
+        const delta = this.getDelta(endRect, currentRect);
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (animated && !prefersReducedMotion && this.image.animate) {
+          this.root.classList.add("closing");
+          this.currentAnimation = this.image.animate([
+            {
+              opacity: 1,
+              transform: "translate(0, 0) scale(1)",
+            },
+            {
+              opacity: 0.82,
+              transform: `translate(${delta.x}px, ${delta.y}px) scale(${delta.scaleX}, ${delta.scaleY})`,
+            },
+          ], {
+            duration: 260,
+            easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+            fill: "forwards",
+          });
+
+          await this.currentAnimation.finished.catch(() => {});
+        }
+
+        this.root.classList.remove("open", "closing");
+        this.root.setAttribute("aria-hidden", "true");
+        this.image.removeAttribute("src");
+        this.image.alt = "";
+        this.image.removeAttribute("style");
+        this.active = false;
+        this.sourceRect = null;
+        this.currentAnimation = null;
+      }
+    }
+
+    /* ===========================================
        INLINE EDITOR
        =========================================== */
     class InlineEditor {
       constructor() {
-        this.storageKey = "probation-review-deck-edits-v2";
+        this.storageKey = "probation-review-deck-edits-v3";
         this.isActive = false;
         this.editables = Array.from(document.querySelectorAll("[data-editable]"));
         this.toggle = document.getElementById("editToggle");
@@ -2908,6 +3415,8 @@
     window.presentation = presentation;
     const editor = new InlineEditor();
     window.editor = editor;
+    const imageLightbox = new ImageLightbox();
+    window.imageLightbox = imageLightbox;
 
     const hotzone = document.querySelector(".edit-hotzone");
     const editToggle = document.getElementById("editToggle");
