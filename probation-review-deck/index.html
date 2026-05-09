@@ -732,6 +732,44 @@
       font-size: clamp(0.82rem, 1.3vw, 1.1rem);
     }
 
+    .builder-bridge {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.55rem, 1.25vw, 1rem);
+      width: min(100%, 1050px);
+      margin-top: clamp(0.45rem, 1.35vw, 1rem);
+    }
+
+    .builder-bridge article {
+      border: 1px solid rgba(247, 242, 232, 0.2);
+      border-radius: var(--radius);
+      background: rgba(247, 242, 232, 0.08);
+      padding: clamp(0.58rem, 1.15vw, 0.95rem);
+      min-height: 0;
+    }
+
+    .section-title .builder-bridge .mini-label {
+      margin-bottom: clamp(0.2rem, 0.55vw, 0.38rem);
+      color: rgba(247, 242, 232, 0.58);
+      font-size: var(--micro-size);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .builder-bridge h3 {
+      margin-bottom: clamp(0.28rem, 0.6vw, 0.48rem);
+      color: #f7f2e8;
+      font-size: clamp(0.98rem, 1.55vw, 1.34rem);
+      line-height: 1.16;
+    }
+
+    .section-title .builder-bridge p {
+      color: rgba(247, 242, 232, 0.76);
+      font-size: clamp(0.68rem, 0.95vw, 0.86rem);
+      line-height: 1.52;
+    }
+
     .section-number {
       position: absolute;
       right: var(--slide-padding);
@@ -830,6 +868,47 @@
       margin-top: clamp(0.16rem, 0.38vw, 0.28rem);
     }
 
+    .quality-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(0.42rem, 0.9vw, 0.72rem);
+      min-width: 0;
+    }
+
+    .quality-metric {
+      border-left: clamp(0.16rem, 0.38vw, 0.26rem) solid var(--brand-blue);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.28);
+      padding: clamp(0.42rem, 0.86vw, 0.7rem);
+      min-width: 0;
+    }
+
+    .quality-metric:nth-child(2) {
+      border-color: var(--data-orange);
+    }
+
+    .quality-metric:nth-child(3) {
+      border-color: var(--tech-cyan);
+    }
+
+    .quality-metric .value {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.2vw, 2.25rem);
+      line-height: 0.95;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .quality-metric .label {
+      display: block;
+      margin-top: clamp(0.12rem, 0.32vw, 0.24rem);
+      color: var(--muted);
+      font-size: clamp(0.56rem, 0.84vw, 0.74rem);
+      font-weight: 800;
+      line-height: 1.32;
+    }
+
     .phone-proof-wall {
       display: flex;
       gap: clamp(0.45rem, 1vw, 0.82rem);
@@ -918,6 +997,8 @@
       animation: proof-scroll 24s linear infinite alternate;
     }
 
+    .aigc-orbit-gallery.is-dragging .aigc-orbit-track,
+    .aigc-orbit-gallery.is-paused .aigc-orbit-track,
     .proof-carousel:hover .proof-track,
     .aigc-orbit-gallery:hover .aigc-orbit-track {
       animation-play-state: paused;
@@ -982,6 +1063,147 @@
     .insight strong {
       display: block;
       margin-bottom: clamp(0.18rem, 0.4vw, 0.32rem);
+    }
+
+    .growth-loop-slide .slide-content {
+      gap: clamp(0.42rem, 1.2vw, 1rem);
+    }
+
+    .growth-loop-slide .timeline-step span,
+    .growth-loop-slide .insight {
+      font-size: clamp(0.56rem, 0.84vw, 0.76rem);
+      line-height: 1.42;
+    }
+
+    .growth-loop-evidence {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+      gap: clamp(0.5rem, 1.2vw, 1rem);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .loop-stat-grid,
+    .cover-proof-pair {
+      display: grid;
+      gap: clamp(0.42rem, 0.95vw, 0.78rem);
+      min-height: 0;
+    }
+
+    .loop-stat-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .loop-stat {
+      border-top: clamp(0.16rem, 0.4vw, 0.28rem) solid var(--brand-blue);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.34);
+      padding: clamp(0.48rem, 0.95vw, 0.78rem);
+      min-width: 0;
+    }
+
+    .loop-stat:nth-child(2) {
+      border-color: var(--data-orange);
+    }
+
+    .loop-stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 2.7vw, 2.65rem);
+      line-height: 0.95;
+    }
+
+    .loop-stat span {
+      display: block;
+      margin-top: clamp(0.16rem, 0.4vw, 0.32rem);
+      color: var(--muted);
+      font-size: clamp(0.56rem, 0.86vw, 0.76rem);
+      font-weight: 800;
+      line-height: 1.36;
+    }
+
+    .cover-proof-pair {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cover-proof-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.34);
+      min-height: clamp(6.8rem, 20vh, 12.2rem);
+      box-shadow: 0 clamp(0.45rem, 1.1vw, 0.9rem) clamp(1.2rem, 2.8vw, 2.3rem) rgba(23, 23, 23, 0.1);
+    }
+
+    .cover-proof-card img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .cover-proof-card span {
+      position: absolute;
+      left: clamp(0.34rem, 0.75vw, 0.58rem);
+      bottom: clamp(0.34rem, 0.75vw, 0.58rem);
+      border: 1px solid rgba(23, 23, 23, 0.12);
+      border-radius: var(--radius);
+      background: rgba(247, 242, 232, 0.9);
+      padding: clamp(0.18rem, 0.42vw, 0.32rem) clamp(0.32rem, 0.7vw, 0.54rem);
+      color: var(--ink);
+      font-size: var(--micro-size);
+      font-weight: 900;
+    }
+
+    .type-review-board {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.34);
+      padding: clamp(0.48rem, 1vw, 0.88rem);
+      min-width: 0;
+    }
+
+    .type-review-board .mini-label {
+      margin-bottom: clamp(0.2rem, 0.48vw, 0.38rem);
+    }
+
+    .review-lead {
+      color: var(--muted);
+      font-size: clamp(0.58rem, 0.88vw, 0.78rem);
+      line-height: 1.42;
+      margin-bottom: clamp(0.38rem, 0.8vw, 0.66rem);
+    }
+
+    .type-review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(0.36rem, 0.8vw, 0.62rem);
+    }
+
+    .type-review-item {
+      border-top: 1px solid var(--hairline);
+      padding-top: clamp(0.28rem, 0.6vw, 0.48rem);
+      min-width: 0;
+    }
+
+    .type-review-item.wide {
+      grid-column: 1 / -1;
+    }
+
+    .type-review-item strong {
+      display: block;
+      font-size: clamp(0.68rem, 1vw, 0.9rem);
+      margin-bottom: clamp(0.12rem, 0.32vw, 0.24rem);
+    }
+
+    .type-review-item span {
+      display: block;
+      color: var(--muted);
+      font-size: clamp(0.55rem, 0.82vw, 0.72rem);
+      line-height: 1.38;
     }
 
     .artifact-spread {
@@ -1403,12 +1625,22 @@
     }
 
     .aigc-orbit-gallery {
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
       min-height: clamp(11rem, 34vh, 19rem);
       border: 1px solid var(--hairline);
       border-radius: var(--radius);
       background: rgba(255, 255, 255, 0.3);
       padding: clamp(0.5rem, 1vw, 0.9rem);
+      cursor: grab;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+    }
+
+    .aigc-orbit-gallery:active,
+    .aigc-orbit-gallery.is-dragging {
+      cursor: grabbing;
     }
 
     .aigc-orbit-track {
@@ -1416,7 +1648,7 @@
       align-items: center;
       gap: clamp(0.44rem, 0.95vw, 0.82rem);
       width: max-content;
-      animation: aigc-pan 28s ease-in-out infinite alternate;
+      animation: aigc-pan 16s ease-in-out infinite alternate;
     }
 
     .orbit-card {
@@ -1424,6 +1656,7 @@
       height: clamp(8rem, 30vh, 16.5rem);
       transform: translateY(var(--y, 0)) rotate(var(--r, 0deg));
       transition: transform 0.22s ease, box-shadow 0.22s ease;
+      scroll-snap-align: center;
     }
 
     .orbit-card:hover {
@@ -1635,20 +1868,20 @@
       text-align: center;
     }
 
-    #slide-21 h2,
-    #slide-22 h2 {
+    #slide-20 h2,
+    #slide-21 h2 {
       font-size: clamp(1.35rem, 3vw, 2.65rem);
       line-height: 1.14;
       margin-bottom: clamp(0.4rem, 0.95vw, 0.8rem);
     }
 
-    #slide-21 .year-roadmap,
-    #slide-22 .year-roadmap {
+    #slide-20 .year-roadmap,
+    #slide-21 .year-roadmap {
       gap: clamp(0.65rem, 1.4vw, 1.25rem);
     }
 
-    #slide-21 .evidence-frame img,
-    #slide-22 .evidence-frame img {
+    #slide-20 .evidence-frame img,
+    #slide-21 .evidence-frame img {
       max-height: min(43vh, 360px);
     }
 
@@ -2006,6 +2239,7 @@
       .core-data-board,
       .brand-layout,
       .aigc-copy-grid,
+      .growth-loop-evidence,
       .future-proof-board,
       .overseas-proof-board {
         grid-template-columns: 1fr;
@@ -2065,6 +2299,7 @@
       .core-data-board,
       .brand-layout,
       .aigc-copy-grid,
+      .growth-loop-evidence,
       .future-proof-board,
       .overseas-proof-board,
       .opening-meta {
@@ -2074,8 +2309,15 @@
       .brand-evidence-grid,
       .account-screenshot-grid,
       .overseas-account-grid,
+      .quality-metrics,
+      .cover-proof-pair,
+      .type-review-grid,
       .growth-skill-map {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .type-review-item.wide {
+        grid-column: auto;
       }
 
       .phone-proof-card {
@@ -2125,19 +2367,19 @@
         grid-template-columns: 1fr;
       }
 
-      #slide-21 .future-proof-board {
+      #slide-20 .future-proof-board {
         grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
       }
 
-      #slide-21 .account-screenshot-grid {
+      #slide-20 .account-screenshot-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      #slide-21 .account-shot {
+      #slide-20 .account-shot {
         height: clamp(5rem, 16vh, 8rem);
       }
 
-      #slide-21 .future-pullquote {
+      #slide-20 .future-pullquote {
         font-size: clamp(0.98rem, 2.5vw, 1.45rem);
       }
 
@@ -2175,38 +2417,47 @@
         font-size: clamp(0.98rem, 2.25vw, 1.42rem);
       }
 
-      #slide-22 .slide-content {
+      #slide-21 .slide-content {
         gap: clamp(0.32rem, 0.9vw, 0.56rem);
       }
 
-      #slide-22 .system-map {
+      .builder-bridge {
+        grid-template-columns: 1fr;
+        gap: clamp(0.32rem, 0.8vw, 0.52rem);
+      }
+
+      .builder-bridge article {
+        padding: clamp(0.42rem, 1vw, 0.66rem);
+      }
+
+      #slide-21 .system-map {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: clamp(0.24rem, 0.7vw, 0.42rem);
       }
 
-      #slide-22 .system-node {
+      #slide-21 .system-node {
         padding: clamp(0.3rem, 0.76vw, 0.48rem);
         font-size: clamp(0.54rem, 1.7vw, 0.72rem);
       }
 
-      #slide-22 .future-card p {
+      #slide-21 .future-card p {
         font-size: clamp(0.52rem, 1.75vw, 0.66rem);
         line-height: 1.3;
       }
 
-      #slide-22 .future-card h3 {
+      #slide-21 .future-card h3 {
         font-size: clamp(0.66rem, 2vw, 0.82rem);
       }
 
-      #slide-22 .overseas-proof-board {
+      #slide-21 .overseas-proof-board {
         grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
       }
 
-      #slide-22 .overseas-account-grid {
+      #slide-21 .overseas-account-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      #slide-22 .overseas-shot {
+      #slide-21 .overseas-shot {
         height: clamp(3rem, 8.2vh, 4.8rem);
       }
     }
@@ -2281,7 +2532,7 @@
 
   <main class="deck" id="deck">
     <section class="slide personal-slide" id="slide-01" data-kicker="Hi, I'm Chestnut">
-      <span class="folio">01 / 23</span>
+      <span class="folio">01 / 22</span>
       <div class="slide-content">
         <div class="personal-hello reveal">
           <p class="eyebrow" data-editable>栗子的转正答辩</p>
@@ -2298,9 +2549,8 @@
         <p>开场可以轻一点：嗨，我是栗子，今天是我入职六个月的转正答辩。今天我不想把它讲成一份流水账，而是想用 20 分钟说明：这 6 个月里，我怎样把内容、数据、AI 工具和业务协同串成一套可以持续运转的运营系统。</p>
       </aside>
     </section>
-
 <section class="slide title-slide" id="slide-02" data-kicker="Probation Review">
-      <span class="folio">02 / 23</span>
+      <span class="folio">02 / 22</span>
       <div class="slide-content">
         <div class="masthead reveal">
           <p class="eyebrow" data-editable>试用期转正述职</p>
@@ -2317,49 +2567,8 @@
         <p>这一页进入正式主题。建议说：我会用“从内容执行到 AI Native 增长系统搭建”来概括试用期，因为这 6 个月的重点不只是完成内容发布，而是让内容工作开始有闭环、有资产、有自动化和业务协同。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-03" data-kicker="Core Data">
-      <span class="folio">03 / 23</span>
-      <div class="slide-content core-data-slide">
-        <div class="core-data-board">
-          <div class="core-data-copy reveal-left">
-            <p class="eyebrow" data-editable>核心数据</p>
-            <h2 data-editable>先看结果：账号增长进入更陡的曲线。</h2>
-            <p class="muted" data-editable>数据不单独说明价值，真正重要的是：增长开始被选题、发布、复盘和平台适配持续驱动。</p>
-            <div class="core-metrics">
-              <div class="core-metric">
-                <span class="value" data-editable>+1,905</span>
-                <span class="label" data-editable>全平台粉丝增长</span>
-              </div>
-              <div class="core-metric">
-                <span class="value" data-editable>+206%</span>
-                <span class="label" data-editable>全平台增长率</span>
-              </div>
-              <div class="core-metric">
-                <span class="value" data-editable>185,466</span>
-                <span class="label" data-editable>全平台播放量</span>
-              </div>
-              <div class="core-metric">
-                <span class="value" data-editable>116</span>
-                <span class="label" data-editable>条有效内容记录</span>
-              </div>
-            </div>
-          </div>
-          <div class="phone-proof-wall reveal-scale" aria-label="账号运营证据图">
-            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/3粉丝数据增长曲线变的更陡.jpg" alt="粉丝数据增长曲线截图"><span data-editable>增长曲线</span></figure>
-            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/1视频号主页.jpg" alt="视频号主页截图"><span data-editable>视频号主页</span></figure>
-            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/6.2爆款视频展示.jpg" alt="爆款视频展示截图"><span data-editable>爆款展示</span></figure>
-            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/2爆款视频.jpg" alt="爆款视频截图"><span data-editable>爆款视频</span></figure>
-          </div>
-        </div>
-      </div>
-      <aside class="speaker-note">
-        <p>这一页用结果抓注意力。建议说：目前核心数据仍沿用附件数据口径，全平台粉丝从 924 到 2,829，净增 1,905，增长 206%。下方几张图作为补充证据，展示增长曲线、视频号主页和爆款内容表现。这不是单点爆发，而是通过选题、发布、复盘和平台适配持续迭代出来的增长。</p>
-      </aside>
-    </section>
-
-<section class="slide" id="slide-04" data-kicker="Agenda">
-      <span class="folio">04 / 23</span>
+<section class="slide" id="slide-03" data-kicker="Agenda">
+      <span class="folio">03 / 22</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
           <p class="eyebrow" data-editable>本次汇报目录</p>
@@ -2392,9 +2601,8 @@
         <p>这页用来给评审建立预期。可以说：我会先讲工作概述，再展开重点项目，最后讲个人成长和未来规划。重点不是罗列事项，而是让大家看到我怎么理解这个岗位未来能创造的价值。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-05" data-kicker="Three Keywords">
-      <span class="folio">05 / 23</span>
+<section class="slide" id="slide-04" data-kicker="Three Keywords">
+      <span class="folio">04 / 22</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
           <p class="eyebrow" data-editable>工作概述</p>
@@ -2423,9 +2631,8 @@
         <p>这里承接目录。建议说：我不想把 6 个月讲成流水账，所以先用三个关键词概述。Growth Driver 是结果，Builder 是系统，AI Native 是方法和进化。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-06" data-kicker="Executive Summary">
-      <span class="folio">06 / 23</span>
+<section class="slide" id="slide-05" data-kicker="Executive Summary">
+      <span class="folio">05 / 22</span>
       <div class="slide-content two-col">
         <div class="headline-stack reveal-left">
           <p class="eyebrow" data-editable>一句话总结</p>
@@ -2455,22 +2662,90 @@
         <p>这一页的作用是给领导一个判断框架：我不是把所有事情都摊开讲，而是围绕结果、资产和进化三个角度讲贡献。后面的项目都可以回到这三个词。</p>
       </aside>
     </section>
-
-<section class="slide dark-slide" id="slide-07" data-kicker="Section 1">
-      <span class="folio">07 / 23</span>
+<section class="slide dark-slide" id="slide-06" data-kicker="Section 1">
+      <span class="folio">06 / 22</span>
       <div class="slide-content section-title">
         <p class="eyebrow reveal" data-editable>重点项目 01</p>
         <h2 class="reveal en" data-editable>Growth Driver</h2>
         <p class="reveal" data-editable>让内容工作对增长结果负责，并且能解释结果背后的原因。</p>
+        <div class="builder-bridge reveal-scale">
+          <article>
+            <p class="mini-label" data-editable>Why</p>
+            <h3 data-editable>增长不是平均发生</h3>
+            <p data-editable>数据集中在少数高命中内容上，说明运营不能只看发布量，而要解释什么内容有效、为什么有效。</p>
+          </article>
+          <article>
+            <p class="mini-label" data-editable>What</p>
+            <h3 data-editable>建立数据驱动闭环</h3>
+            <p data-editable>围绕选题、生产、发布、复盘、迭代搭建增长链路，并拆解平台差异和爆款内容公式。</p>
+          </article>
+          <article>
+            <p class="mini-label" data-editable>Result</p>
+            <h3 data-editable>形成可复用判断</h3>
+            <p data-editable>实现 +1,905 粉丝增长、+206% 增长率和 185,466 播放，并沉淀 116 条有效内容记录。</p>
+          </article>
+        </div>
       </div>
       <div class="section-number en">01</div>
       <aside class="speaker-note">
-        <p>进入第一部分。建议用一句话定调：增长不是多发几条内容，而是建立选题、生产、发布、复盘、迭代的闭环，并持续知道为什么某些内容有效。</p>
+        <p>进入第一部分。可以先讲清楚一个判断：增长不是平均发生的，所以我不只看发布量，而是把选题、生产、发布、复盘和迭代连成闭环，最终形成可复用的内容判断。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-08" data-kicker="Growth Loop">
-      <span class="folio">08 / 23</span>
+<section class="slide" id="slide-07" data-kicker="Core Data">
+      <span class="folio">07 / 22</span>
+      <div class="slide-content core-data-slide">
+        <div class="core-data-board">
+          <div class="core-data-copy reveal-left">
+            <p class="eyebrow" data-editable>核心数据</p>
+            <h2 data-editable>先看结果：账号增长进入更陡的曲线。</h2>
+            <p class="muted" data-editable>数据不单独说明价值，真正重要的是：增长开始被选题、发布、复盘和平台适配持续驱动。</p>
+            <div class="core-metrics">
+              <div class="core-metric">
+                <span class="value" data-editable>+1,905</span>
+                <span class="label" data-editable>全平台粉丝增长</span>
+              </div>
+              <div class="core-metric">
+                <span class="value" data-editable>+206%</span>
+                <span class="label" data-editable>全平台增长率</span>
+              </div>
+              <div class="core-metric">
+                <span class="value" data-editable>185,466</span>
+                <span class="label" data-editable>全平台播放量</span>
+              </div>
+              <div class="core-metric">
+                <span class="value" data-editable>116</span>
+                <span class="label" data-editable>条有效内容记录</span>
+              </div>
+            </div>
+            <div class="quality-metrics reveal">
+              <article class="quality-metric">
+                <span class="value" data-editable>44.8%</span>
+                <span class="label" data-editable>视频播放量超过 1,000</span>
+              </article>
+              <article class="quality-metric">
+                <span class="value" data-editable>24.1%</span>
+                <span class="label" data-editable>视频播放量超过 2,000</span>
+              </article>
+              <article class="quality-metric">
+                <span class="value" data-editable>3.7 万</span>
+                <span class="label" data-editable>单条视频最高播放量</span>
+              </article>
+            </div>
+          </div>
+          <div class="phone-proof-wall reveal-scale" aria-label="账号运营证据图">
+            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/3粉丝数据增长曲线变的更陡.jpg" alt="粉丝数据增长曲线截图"><span data-editable>增长曲线</span></figure>
+            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/1视频号主页.jpg" alt="视频号主页截图"><span data-editable>视频号主页</span></figure>
+            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/6.2爆款视频展示.jpg" alt="爆款视频展示截图"><span data-editable>爆款展示</span></figure>
+            <figure class="phone-proof-card"><img src="../图片视频素材/账号运营后台截图/2爆款视频.jpg" alt="爆款视频截图"><span data-editable>爆款视频</span></figure>
+          </div>
+        </div>
+      </div>
+      <aside class="speaker-note">
+        <p>这一页用结果抓注意力。建议说：目前核心数据仍沿用附件数据口径，全平台粉丝从 924 到 2,829，净增 1,905，增长 206%。补充看内容质量：44.8% 的视频播放超过 1,000，24.1% 超过 2,000，单条最高播放达到 3.7 万。这些数据说明不是只有单点爆发，而是通过选题、发布、复盘和平台适配持续迭代出来的增长。</p>
+      </aside>
+    </section>
+<section class="slide growth-loop-slide" id="slide-08" data-kicker="Growth Loop">
+      <span class="folio">08 / 22</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
           <p class="eyebrow" data-editable>账号增长闭环</p>
@@ -2500,17 +2775,44 @@
         </div>
         <div class="insight-strip reveal">
           <p class="insight" data-editable><strong>产出规模</strong>116 条有效内容记录，覆盖短视频、长视频、公众号长文、PR、产品文案等形态。</p>
-          <p class="insight" data-editable><strong>策略变化</strong>形成“50% 深度实测 + 30% 大厂热点 + 20% 观点”的内容结构。</p>
+          <p class="insight" data-editable><strong>策略变化</strong>形成“50% 前沿洞察、行业动态 + 30% 利他向内容 + 20% 观点内容”的内容结构。</p>
           <p class="insight" data-editable><strong>复盘重点</strong>把播放量拆到标题、封面、前 3 秒、完播率、互动率和涨粉转化。</p>
+        </div>
+        <div class="growth-loop-evidence reveal-scale">
+          <div class="cover-proof-pair">
+            <figure class="cover-proof-card">
+              <img src="../图片视频素材/新增素材-20260509/cover-block-ceo-logo.jpg" alt="Block CEO 组织变革新版封面 1">
+            </figure>
+            <figure class="cover-proof-card">
+              <img src="../图片视频素材/新增素材-20260509/cover-block-ceo-clean.jpg" alt="Block CEO 组织变革新版封面 2">
+            </figure>
+          </div>
+          <div class="type-review-board">
+            <p class="mini-label" data-editable>内容类型复盘</p>
+            <p class="review-lead" data-editable>基于 44.8% 视频破千、24.1% 视频破两千和单条最高 3.7 万播放，进一步拆解哪些内容方向更容易跑出来。</p>
+            <div class="type-review-grid">
+              <article class="type-review-item">
+                <strong data-editable>表现更好</strong>
+                <span data-editable>前沿洞察 / 行业动态、结构化解读、利他向内容和认知颠覆类内容。</span>
+              </article>
+              <article class="type-review-item">
+                <strong data-editable>需要换打法</strong>
+                <span data-editable>纯产品向、泛切片和直接功能介绍，要转成场景化、利他化表达。</span>
+              </article>
+              <article class="type-review-item wide">
+                <strong data-editable>后续动作</strong>
+                <span data-editable>拆分官号、场景号、AIGC 数字人号，分别服务专业认知、产品场景转化和 IP 传播，做更垂直的内容表达。</span>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
       <aside class="speaker-note">
-        <p>这页讲方法。可以强调：我不是以发布量作为唯一目标，而是让每次发布都能反哺下一次选题和表达方式。这样内容工作才从任务制变成系统制。</p>
+        <p>这页讲方法和复盘。可以强调：我不是以发布量作为唯一目标，而是让每次发布都能反哺下一次选题和表达方式。这里用 44.8% 破千、24.1% 破两千和单条最高 3.7 万引出判断：前沿洞察、结构化解读、利他向内容更容易跑出来；产品向和泛切片需要换成更场景化、更垂直的账号打法。</p>
       </aside>
     </section>
-
 <section class="slide" id="slide-09" data-kicker="Data Insight">
-      <span class="folio">09 / 23</span>
+      <span class="folio">09 / 22</span>
       <div class="slide-content wide-two-col">
         <div class="headline-stack reveal-left">
           <p class="eyebrow" data-editable>数据洞察</p>
@@ -2531,9 +2833,8 @@
         <p>这一页避免只说我看数据，要说明看出了什么。建议补充：这让我明确不同平台的任务不同，视频号负责专业心智和增长，小红书负责热点破圈，产品内容负责销售可复用素材。</p>
       </aside>
     </section>
-
 <section class="slide" id="slide-10" data-kicker="Content Formula">
-      <span class="folio">10 / 23</span>
+      <span class="folio">10 / 22</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
           <p class="eyebrow" data-editable>爆款与内容公式</p>
@@ -2569,9 +2870,8 @@
         <p>讲这页时可以用一句判断：内容增长不是靠平均用力，而是要提高命中率。Top 20 的集中度说明，后续应该把高表现内容拆成模板，再迁移到不同平台和业务场景。</p>
       </aside>
     </section>
-
 <section class="slide" id="slide-11" data-kicker="Matrix & Business">
-      <span class="folio">11 / 23</span>
+      <span class="folio">11 / 22</span>
       <div class="slide-content wide-two-col">
         <div class="headline-stack reveal-left">
           <p class="eyebrow" data-editable>矩阵与业务协同</p>
@@ -2592,22 +2892,37 @@
         <p>这里要体现业务协同。可以说：我开始把内容和业务连接起来，产品向内容不只评价播放量，也要看它是否能支持销售复用、客户理解和线索承接。</p>
       </aside>
     </section>
-
 <section class="slide dark-slide" id="slide-12" data-kicker="Section 2">
-      <span class="folio">12 / 23</span>
+      <span class="folio">12 / 22</span>
       <div class="slide-content section-title">
         <p class="eyebrow reveal" data-editable>重点项目 02</p>
         <h2 class="reveal en" data-editable>Builder</h2>
-        <p class="reveal" data-editable>把个人经验沉淀为团队可复用的流程、资产和外宣基础设施。</p>
+        <p class="reveal" data-editable>把个人经验沉淀为团队可复用的流程、资产、外宣基础设施，并进一步转化为 AI 内容系统的输入底座。</p>
+        <div class="builder-bridge reveal-scale">
+          <article>
+            <p class="mini-label" data-editable>Why</p>
+            <h3 data-editable>重复链路占用判断时间</h3>
+            <p data-editable>热点追踪、选题拆解、素材检索和复盘分散，经验难以稳定复用，也缺少 AI 系统可调用的结构化输入。</p>
+          </article>
+          <article>
+            <p class="mini-label" data-editable>What</p>
+            <h3 data-editable>把方法沉淀成系统输入</h3>
+            <p data-editable>SOP、知识库、数据表和栏目资产被整理成选题规则、内容结构、平台口径和业务素材，为内容工厂铺底。</p>
+          </article>
+          <article>
+            <p class="mini-label" data-editable>Result</p>
+            <h3 data-editable>从可交接到可自动化</h3>
+            <p data-editable>团队协作更可复用，后续 AI 内容工厂也能基于这些资产跑通数据采集、选题分析、内容创作和批量发布闭环。</p>
+          </article>
+        </div>
       </div>
       <div class="section-number en">02</div>
       <aside class="speaker-note">
-        <p>第二部分开始讲搭系统。建议强调：如果一个运营只靠个人经验，产能和质量都会有天花板；我做 SOP、知识库和品牌基础设施，是为了让团队可以持续复用。</p>
+        <p>第二部分开始讲搭系统。可以强调：内容生产里有很多重复链路和分散经验，所以我把 SOP、知识库、数据表和栏目资产沉淀下来，让团队协作更可交接，也为后面的 AI 内容工厂铺垫。</p>
       </aside>
     </section>
-
 <section class="slide" id="slide-13" data-kicker="Content SOP">
-      <span class="folio">13 / 23</span>
+      <span class="folio">13 / 22</span>
       <div class="slide-content wide-two-col">
         <div class="headline-stack reveal-left">
           <p class="eyebrow" data-editable>内容 SOP</p>
@@ -2628,9 +2943,8 @@
         <p>这页讲可复制。建议补一句：AI 行业热点很快，如果每次都从零开始找资料，团队会很疲惫；SOP 的价值是让高频动作变成低摩擦动作。</p>
       </aside>
     </section>
-
 <section class="slide" id="slide-14" data-kicker="Content Assets">
-      <span class="folio">14 / 23</span>
+      <span class="folio">14 / 22</span>
       <div class="slide-content artifact-spread">
         <div class="headline-stack reveal-left">
           <p class="eyebrow" data-editable>内容资产体系</p>
@@ -2661,9 +2975,8 @@
         <p>建议强调资产化的意义：不是每条内容发完就结束，而是让它后续可以转成公众号、PR、销售话术、官网案例、海外内容或产品素材。右侧 SOP 图只保留证据感，用来说明这些方法不是口头经验，而是被沉淀成了可复用文件。</p>
       </aside>
     </section>
-
 <section class="slide" id="slide-15" data-kicker="Brand Infrastructure">
-      <span class="folio">15 / 23</span>
+      <span class="folio">15 / 22</span>
       <div class="slide-content brand-layout">
         <div class="headline-stack reveal-left">
           <p class="eyebrow" data-editable>品牌传播基础设施</p>
@@ -2708,43 +3021,37 @@
         <p>这里要主动解释为什么不是杂事。建议说：这些工作短期可能不像播放量那样显眼，但它们会影响客户、合作伙伴和活动受众如何认识公司，是长期信任资产。右侧的中英文宣传单和小程序截图，是对外表达开始统一、可复用的证据。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-16" data-kicker="Collaboration">
-      <span class="folio">16 / 23</span>
-      <div class="slide-content">
-        <div class="headline-stack reveal">
-          <p class="eyebrow" data-editable>协同能力</p>
-          <h2 data-editable>让不同角色进入同一条内容生产线。</h2>
-        </div>
-        <div class="timeline reveal-scale">
-          <div class="timeline-step"><strong data-editable>实习生</strong><span data-editable>热点盯盘、封面收集、排版、海外发布和媒介资料。</span></div>
-          <div class="timeline-step"><strong data-editable>剪辑/设计</strong><span data-editable>脚本、封面、视频素材和发布节奏按节点交接。</span></div>
-          <div class="timeline-step"><strong data-editable>产品/测试</strong><span data-editable>产品能力、客户场景、功能边界和真实使用问题进入素材池。</span></div>
-          <div class="timeline-step"><strong data-editable>技术</strong><span data-editable>官网收录、自动发布接口、AI 内容工厂链路和工具验证协同推进。</span></div>
-          <div class="timeline-step"><strong data-editable>销售/客户</strong><span data-editable>线索、客户问题、案例需求和销售素材形成反馈闭环。</span></div>
-        </div>
-        <p class="pullquote reveal" data-editable>我开始承担的不只是“内容交付”，还有流程组织、资料沉淀和跨部门推进。</p>
-      </div>
-      <aside class="speaker-note">
-        <p>这页可以自然过渡到个人能力：作为主管，不能只证明自己能做，还要证明自己能把其他角色组织进流程，让团队产能和质量更稳定。</p>
-      </aside>
-    </section>
-
-<section class="slide dark-slide" id="slide-17" data-kicker="Section 3">
-      <span class="folio">17 / 23</span>
+<section class="slide dark-slide" id="slide-16" data-kicker="Section 3">
+      <span class="folio">16 / 22</span>
       <div class="slide-content section-title">
         <p class="eyebrow reveal" data-editable>重点项目 03</p>
         <h2 class="reveal en" data-editable>AI Native</h2>
         <p class="reveal" data-editable>用真实运营场景验证 AI 工具价值，让内容生产链路更高效、更可规模化。</p>
+        <div class="builder-bridge reveal-scale">
+          <article>
+            <p class="mini-label" data-editable>Why</p>
+            <h3 data-editable>重复链路需要被系统接管</h3>
+            <p data-editable>内容采集、选题分析、脚本初稿和发布准备占用大量时间，运营需要把判断时间还给策略。</p>
+          </article>
+          <article>
+            <p class="mini-label" data-editable>What</p>
+            <h3 data-editable>用真实场景验证 AI</h3>
+            <p data-editable>搭建 AI 内容工厂，测试 AIGC 数字人和自动发布，把 AI 能力接入真实运营链路。</p>
+          </article>
+          <article>
+            <p class="mini-label" data-editable>Result</p>
+            <h3 data-editable>跑通 MVP 闭环</h3>
+            <p data-editable>公众号文章已实现数据采集、选题分析、内容创作到批量发布，后续扩展多平台和舆情输入。</p>
+          </article>
+        </div>
       </div>
       <div class="section-number en">03</div>
       <aside class="speaker-note">
-        <p>第三部分突出你的差异化。建议说：公司本身是 AI 公司，所以运营不能只讲 AI，也要把 AI 用到自己的工作流里。</p>
+        <p>第三部分突出你的差异化。可以强调：AI Native 不是停留在工具试用，而是把重复链路交给系统接管；目前内容工厂、数字人和自动发布已经在真实运营场景里完成验证。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-18" data-kicker="AI Content Factory">
-      <span class="folio">18 / 23</span>
+<section class="slide" id="slide-17" data-kicker="AI Content Factory">
+      <span class="folio">17 / 22</span>
       <div class="slide-content wide-two-col">
         <div class="headline-stack reveal-left">
           <p class="eyebrow" data-editable>AI 内容工厂</p>
@@ -2767,12 +3074,17 @@
         <p>这页注意不要讲成技术细节。重点是：我用真实运营场景验证 AI 提效，目前已经实现公众号文章从数据采集、选题分析、内容创作到内容分发的 MVP 闭环，并且支持批量发布。低风险、高重复环节优先自动化，高判断、高品牌风险环节保留人工审核。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-19" data-kicker="AIGC Human">
-      <span class="folio">19 / 23</span>
+<section class="slide" id="slide-18" data-kicker="AIGC Human">
+      <span class="folio">18 / 22</span>
       <div class="slide-content aigc-showcase">
         <div class="aigc-orbit-gallery reveal-scale">
           <div class="aigc-orbit-track">
+            <figure class="orbit-card wide" style="--y: calc(-1 * clamp(0.16rem, 0.6vw, 0.48rem)); --r: 1deg;"><img src="../图片视频素材/新增素材-20260509/aigc-new-headphone-wide.jpg" alt="新增数字人耳机形象横图"></figure>
+            <figure class="orbit-card" style="--y: clamp(0.18rem, 0.7vw, 0.54rem); --r: -2deg;"><img src="../图片视频素材/新增素材-20260509/aigc-new-green-portrait.jpg" alt="新增数字人绿植写真"></figure>
+            <figure class="orbit-card" style="--y: calc(-1 * clamp(0.12rem, 0.5vw, 0.4rem)); --r: 2deg;"><img src="../图片视频素材/新增素材-20260509/aigc-new-green-triptych.jpg" alt="新增数字人绿植三图"></figure>
+            <figure class="orbit-card" style="--y: clamp(0.14rem, 0.55vw, 0.44rem); --r: -1deg;"><img src="../图片视频素材/新增素材-20260509/aigc-new-headphone-grid.jpg" alt="新增数字人耳机表情组"></figure>
+            <figure class="orbit-card" style="--y: calc(-1 * clamp(0.2rem, 0.75vw, 0.56rem)); --r: 2deg;"><img src="../图片视频素材/新增素材-20260509/aigc-new-desert-full.jpg" alt="新增数字人沙漠全身图"></figure>
+            <figure class="orbit-card" style="--y: clamp(0.18rem, 0.65vw, 0.5rem); --r: -2deg;"><img src="../图片视频素材/新增素材-20260509/aigc-new-desert-triptych.jpg" alt="新增数字人沙漠三图"></figure>
             <figure class="orbit-card wide" style="--y: clamp(0.1rem, 0.5vw, 0.4rem); --r: -2deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/司南三视图.jpeg" alt="司南真人三视图"></figure>
             <figure class="orbit-card wide" style="--y: calc(-1 * clamp(0.2rem, 0.7vw, 0.52rem)); --r: 2deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/天鹅三视图.jpeg" alt="天鹅真人三视图"></figure>
             <figure class="orbit-card wide" style="--y: clamp(0.2rem, 0.8vw, 0.58rem); --r: -1deg;"><img src="../图片视频素材/AICG数字人账号内容储备与资产搭建/智能体人物三视图/蒙特卡罗三视图.jpeg" alt="蒙特卡罗真人三视图"></figure>
@@ -2803,9 +3115,8 @@
         <p>这页可以表现出理性判断：不是看到新工具就全量投入，而是测试成本、自然度和稳定性。上方画廊展示三视图和小红书图文储备，说明 AIGC 小号不是只有一个形象，而是有资产库、栏目和内容储备。未来重点是把公司的智能体形象和相似资产体系推出去，让更多人认识这些角色。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-20" data-kicker="Personal Growth">
-      <span class="folio">20 / 23</span>
+<section class="slide" id="slide-19" data-kicker="Personal Growth">
+      <span class="folio">19 / 22</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
           <p class="eyebrow" data-editable>个人成长</p>
@@ -2829,9 +3140,8 @@
         <p>个人成长页要真诚，不只讲“我做了什么”，还要讲“我怎么变得更能承担”。可以说：我在项目拆解、解决问题、AI Native、跨部门沟通、系统搭建、团队管理和内容策划上都有明显升级。让我惊喜的是，AI 不只是内容生成工具，也能帮我处理剪辑气口、格式整理等重复劳动，让我把精力放在判断和策略上。接下来仍要继续补齐增长和业务绑定、团队协作标准、AI 系统稳定化。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-21" data-kicker="Future 1">
-      <span class="folio">21 / 23</span>
+<section class="slide" id="slide-20" data-kicker="Future 1">
+      <span class="folio">20 / 22</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
           <p class="eyebrow" data-editable>未来规划 01</p>
@@ -2868,9 +3178,8 @@
         <p>这页讲未来账号布局。建议说：国内账号不再只靠一个官号承载所有内容，而是拆成行业洞察、场景和 AI 趋势/AIGC 三类。左侧是规划图，右侧是三类账号的当前证据。我的职责是在过程中持续沉淀 SOP 或 Skills，让不同实习生可以按方向稳定运营。</p>
       </aside>
     </section>
-
-<section class="slide" id="slide-22" data-kicker="Future 2">
-      <span class="folio">22 / 23</span>
+<section class="slide" id="slide-21" data-kicker="Future 2">
+      <span class="folio">21 / 22</span>
       <div class="slide-content">
         <div class="headline-stack reveal">
           <p class="eyebrow" data-editable>未来规划 02</p>
@@ -2919,9 +3228,8 @@
         <p>这页讲未来自动化和海外。建议说：目前微信公众号方向已经跑通，下一步希望扩展到更多平台，同时增加 AI 舆情监控智能体，让热点、竞品和用户反馈更早进入内容系统。海外方面会从官号、社区、邮件和竞品语料库开始做，AI 负责重复链路，人负责判断、审核和方向。</p>
       </aside>
     </section>
-
-<section class="slide dark-slide" id="slide-23" data-kicker="Closing">
-      <span class="folio">23 / 23</span>
+<section class="slide dark-slide" id="slide-22" data-kicker="Closing">
+      <span class="folio">22 / 22</span>
       <div class="slide-content promise">
         <div class="headline-stack reveal-left">
           <p class="eyebrow" data-editable>转正后的岗位价值</p>
@@ -2956,10 +3264,10 @@
         this.navDotsContainer = document.getElementById("navDots");
         this.sectionNavContainer = document.getElementById("sectionNav");
         this.sections = [
-          { label: "工作概述", start: 4, end: 5, targetIndex: 4 },
-          { label: "重点项目", start: 6, end: 18, targetIndex: 6 },
-          { label: "个人成长", start: 19, end: 19, targetIndex: 19 },
-          { label: "未来规划", start: 20, end: 22, targetIndex: 20 },
+          { label: "工作概述", start: 2, end: 4, targetIndex: 2 },
+          { label: "重点项目", start: 5, end: 17, targetIndex: 5 },
+          { label: "个人成长", start: 18, end: 18, targetIndex: 18 },
+          { label: "未来规划", start: 19, end: 21, targetIndex: 19 },
         ];
         this.notesPanel = document.getElementById("notesPanel");
         this.notesContent = document.getElementById("notesContent");
@@ -2970,6 +3278,7 @@
         this.setupProgressBar();
         this.setupNavDots();
         this.setupSectionNav();
+        this.setupDraggableGalleries();
         this.updateNotes();
         const initialIndex = this.getInitialSlideIndex();
         this.goToSlide(initialIndex, false);
@@ -3087,6 +3396,50 @@
         this.updateSectionNav();
       }
 
+      setupDraggableGalleries() {
+        document.querySelectorAll(".aigc-orbit-gallery").forEach((gallery) => {
+          let isDown = false;
+          let startX = 0;
+          let scrollLeft = 0;
+          let dragged = false;
+
+          const endDrag = () => {
+            if (!isDown) return;
+            isDown = false;
+            gallery.classList.remove("is-dragging");
+            window.setTimeout(() => gallery.classList.remove("is-paused"), 700);
+          };
+
+          gallery.addEventListener("pointerdown", (event) => {
+            if (event.button !== undefined && event.button !== 0) return;
+            isDown = true;
+            dragged = false;
+            gallery.classList.add("is-dragging", "is-paused");
+            startX = event.clientX;
+            scrollLeft = gallery.scrollLeft;
+            gallery.setPointerCapture?.(event.pointerId);
+          });
+
+          gallery.addEventListener("pointermove", (event) => {
+            if (!isDown) return;
+            const walk = event.clientX - startX;
+            if (Math.abs(walk) > 4) dragged = true;
+            gallery.scrollLeft = scrollLeft - walk;
+            event.preventDefault();
+          });
+
+          gallery.addEventListener("pointerup", endDrag);
+          gallery.addEventListener("pointercancel", endDrag);
+          gallery.addEventListener("pointerleave", endDrag);
+          gallery.addEventListener("click", (event) => {
+            if (!dragged) return;
+            event.preventDefault();
+            event.stopPropagation();
+            dragged = false;
+          }, true);
+        });
+      }
+
       updateProgress() {
         const progress = ((this.currentSlide + 1) / this.slides.length) * 100;
         this.progressBar.style.width = `${progress}%`;
@@ -3099,7 +3452,7 @@
       }
 
       updateSectionNav() {
-        const shouldShow = this.currentSlide >= 4;
+        const shouldShow = this.currentSlide >= 2;
         this.sectionNavContainer.classList.toggle("visible", shouldShow);
         Array.from(this.sectionNavContainer.children).forEach((item, index) => {
           const section = this.sections[index];
@@ -3312,7 +3665,7 @@
        =========================================== */
     class InlineEditor {
       constructor() {
-        this.storageKey = "probation-review-deck-edits-v3";
+        this.storageKey = "probation-review-deck-edits-v4";
         this.isActive = false;
         this.editables = Array.from(document.querySelectorAll("[data-editable]"));
         this.toggle = document.getElementById("editToggle");
