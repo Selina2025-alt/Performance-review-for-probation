@@ -3402,11 +3402,22 @@
           let startX = 0;
           let scrollLeft = 0;
           let dragged = false;
+          let pointerDownImage = null;
+          let suppressNextClick = false;
 
-          const endDrag = () => {
+          const endDrag = (event) => {
             if (!isDown) return;
+            const shouldOpenImage = !dragged && pointerDownImage && !document.body.classList.contains("editing");
             isDown = false;
             gallery.classList.remove("is-dragging");
+            if (shouldOpenImage && window.imageLightbox?.open) {
+              event?.preventDefault();
+              event?.stopPropagation();
+              suppressNextClick = true;
+              window.imageLightbox.open(pointerDownImage);
+              window.setTimeout(() => { suppressNextClick = false; }, 0);
+            }
+            pointerDownImage = null;
             window.setTimeout(() => gallery.classList.remove("is-paused"), 700);
           };
 
@@ -3414,6 +3425,7 @@
             if (event.button !== undefined && event.button !== 0) return;
             isDown = true;
             dragged = false;
+            pointerDownImage = event.target.closest?.("img") || null;
             gallery.classList.add("is-dragging", "is-paused");
             startX = event.clientX;
             scrollLeft = gallery.scrollLeft;
@@ -3432,10 +3444,11 @@
           gallery.addEventListener("pointercancel", endDrag);
           gallery.addEventListener("pointerleave", endDrag);
           gallery.addEventListener("click", (event) => {
-            if (!dragged) return;
+            if (!dragged && !suppressNextClick) return;
             event.preventDefault();
             event.stopPropagation();
             dragged = false;
+            suppressNextClick = false;
           }, true);
         });
       }
